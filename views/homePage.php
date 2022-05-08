@@ -9,11 +9,19 @@
         </ol>
 
         <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active"id="img3">
+            <div class="caption">
+              <h1>FORMULAIRE</h1>
+              <h2>Inscris-toi et tu pourras jouer avec nous! </h2>
+              <button type="button" class="btn btn-secondary">INSCRIPTION</button>
+            </div>
+          </div>
 
-          <div class="carousel-item active" id="img1">
+          <div class="carousel-item " id="img1">
             <div class="caption">
               <h1>Es-tu un vrai fan des Pokemons ?</h1>
               <h2>Je te défie de répondre à ce quiz pour le vérifier.</h2>
+              <button type="button" class="btn btn-secondary">JOUER</button>
             </div>
           </div>
 
@@ -21,18 +29,12 @@
             <div class="caption">
               <h1 class="memo">Sauras-tu réussir ce Mémo ?</h1>
               <h2 class="text-dark">Allons vérifier cela.</h2>
-
-              <a><button type="button" class="btn btn-secondary">Secondary</button></a>
+              <a><button type="button" class="btn btn-secondary">JOUER</button></a>
               <div class="clear"></div>
             </div>
           </div>
           
-          <div class="carousel-item"id="img3">
-            <div class="caption">
-              <h1>FORMULAIRE</h1>
-              <h2>Inscris-toi et tu pourras jouer avec nous! </h2>
-            </div>
-          </div>
+
 
         </div>
         
