@@ -1,8 +1,6 @@
 <?php if (!empty($_SESSION["user"])) { ?>
     Bonjour <?= $_SESSION["user"]->login; ?>
 <?php } ?>
-<!-- <body>
-  <header>
     <section>
       <div class="container-fluid">
         <div class="row">
@@ -19,7 +17,8 @@
                   <div class="caption">
                     <h1>FORMULAIRE</h1>
                     <h2>Inscris-toi et tu pourras jouer avec nous! </h2>
-                    <button type="button" class="btn btn-secondary">INSCRIPTION</button>
+                    <!-- <button type="button" class="btn btn-secondary">INSCRIPTION</button> -->
+                    <a class="btn btn-info" href="/controllers/signinCtrl.php">Inscription</a>
                   </div>
               </div>
 
@@ -52,8 +51,7 @@
         </div>
       </div>
     <section>
-  </header>
-</body> -->
+
 
 
 

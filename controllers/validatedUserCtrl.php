@@ -1,7 +1,7 @@
 <?php
 require_once dirname(__FILE__) . '/../utils/init.php';
 
-require_once dirname(__FILE__) . '/../models/users.php';
+require_once dirname(__FILE__) . '/../models/Users.php';
 
 $mail = trim(filter_input(INPUT_GET, 'mail', FILTER_SANITIZE_EMAIL));
 

@@ -1,6 +1,6 @@
 <?php
 require_once(dirname(__FILE__) . '/../utils/init.php');
-require_once(dirname(__FILE__) . '/../models/users.php');
+require_once(dirname(__FILE__) . '/../models/Users.php');
 
 if($_SERVER["REQUEST_METHOD"] == 'POST'){
     $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
