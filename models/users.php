@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__) . '/../utils/database.php');
+require_once(dirname(__FILE__) . '/../utils/Database.php');
 
 
 class User{
@@ -13,7 +13,7 @@ class User{
     private int $_id_rights;
     
 
-    public function __construct(string $login, string $mail, string $password, ?string $validated_at = NULL, int $id_rights){
+    public function __construct(string $login, string $mail, string $password, ?string $validated_at = NULL){
         
         $this->setLogin($login);
         $this->setMail($mail);
@@ -98,7 +98,7 @@ class User{
             $sth = Database::getInstance()->prepare($sql);
 
             //Affectation des valeurs aux marqueurs nominatifs
-            $sth->bindValue(':lastname', $this->getLogin(), PDO::PARAM_STR);
+            $sth->bindValue(':login', $this->getLogin(), PDO::PARAM_STR);
             $sth->bindValue(':mail', $this->getMail(), PDO::PARAM_STR);
             $sth->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
             // On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
@@ -144,7 +144,7 @@ class User{
             $sth->bindValue(':validated_at', $this->getValidatedAt());
             $sth->bindValue(':id', $id, PDO::PARAM_INT);
             return $sth->execute();
-           
+
         } catch (PDOException $ex) {
             return false;
         }

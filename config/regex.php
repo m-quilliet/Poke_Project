@@ -1,5 +1,8 @@
-<?php 
-define('REGEX_NAME', "^[a-zA-Zïëüÿöçâéèñôáóøšşćĕłăčőřžåķņńžůãşœæę '\-]*$");//* quantifieur=autorise plusieurs fois 
-define('REGEX_DATE', "^([0-9]{4})[\/\-]?([0-9]{2})[\/\-]?([0-9]{2})");
-define('REGEX_PHONE', "^[0-9]{10}");// pas tirer ou slash ds celle ci
-define ('REGEX_TIME',"^[0-9]{2}:[0-9]{2}");
+<?php
+define('REGEXP_STR_NO_NUMBER','^[A-Za-zéèêëàâäôöûüç\' ]+$');
+
+define('REGEXP_DATE',"^\d{4}-\d{2}-\d{1,2}$");
+
+define('REGEXP_PHONE', '^(\+33|0|0033)[1-9]((\-|\/|\.)?\d{2}){4}$');
+
+define('REGEXP_DATE_HOUR',"^\d{4}-\d{2}-\d{1,2}$");

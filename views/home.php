@@ -1,4 +1,7 @@
-<body>
+<?php if (!empty($_SESSION["user"])) { ?>
+    Bonjour <?= $_SESSION["user"]->login; ?>
+<?php } ?>
+<!-- <body>
   <header>
     <section>
       <div class="container-fluid">
@@ -50,7 +53,7 @@
       </div>
     <section>
   </header>
-</body>
+</body> -->
 
 
 

@@ -41,3 +41,18 @@
             </nav>   
     </header>
 <body>
+<div class="mt-5">
+    <?php if(empty($_SESSION["user"])){?>
+      <a class="btn btn-info" href="/controllers/signupCtrl.php">Connexion</a>
+
+      <a class="btn btn-info" href="/controllers/signinCtrl.php">Inscription</a>
+    <?php } else {?>
+
+    <a class="btn btn-warning" href="/controllers/logoutCtrl.php">Déconnexion</a>
+    <?php } ?>
+    </div>
+  <div class="container">
+
+
+
+
