@@ -1,4 +1,4 @@
-coucou<?php if(isset($message)) {?>
+<?php if(isset($message)) {?>
 
 <div class="alert alert-warning" role="alert">
     <?= nl2br($message)?>
@@ -6,18 +6,10 @@ coucou<?php if(isset($message)) {?>
 
 <?php } else { ?>
 
-<form action="" method="GET" class="row">
-    <div class="form-group col-3">
-        <input type="text" name="s" id="s" value="<?=$s?>" class="form-control" placeholder="Qui recherchez-vous?">
-    </div>
-    <div class="form-group col-9">
-        <input type="submit" value="Rechercher" class="btn btn-info">
-    </div>
 
-</form>
 
 <p class="mt-3 fst-italic">
-    Il y a <span class="fw-bold"><?=$nbUsers?> patients</span> dans votre cabinet
+    Il y a <span class="fw-bold"><?=$nbUsers?> utilisateurs </span> sur votre site
 </p>
 <table class="table">
     <thead>

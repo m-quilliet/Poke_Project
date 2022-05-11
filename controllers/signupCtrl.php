@@ -1,26 +1,33 @@
 <?php
 require_once(dirname(__FILE__) . '/../utils/init.php');
-require_once(dirname(__FILE__) . '/../models/Users.php');
+require_once(dirname(__FILE__) . '/../models/User.php');
+require_once(dirname(__FILE__) . '/../helpers/JWT.php');
 
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\SMTP;
+// use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader
+// require_once(dirname(__FILE__) . '/../vendor/autoload.php');
 
 if($_SERVER["REQUEST_METHOD"] == 'POST'){
 
-    // login ******************************************************
+    // lastname******************************************************
     // Nettoyage et vérification
-    $login = trim(filter_input(INPUT_POST, 'login', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
-    $isOk = filter_var($login, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/'.REGEXP_STR_NO_NUMBER.'/')));
+    $lastname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
+    $isOk = filter_var($lastname, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/'.REGEXP_STR_NO_NUMBER.'/')));
 
-    if(!empty($login)){
+    if(!empty($lastname)){
         if(!$isOk){
-            $errorsArray['login_error'] = 'Merci de choisir un login valide';
+            $errorsArray['lastname_error'] = 'Merci de choisir un nom valide';
         }
     }else{
-        $errorsArray['login_error'] = 'Le champ est obligatoire';
+        $errorsArray['lastname_error'] = 'Le champ est obligatoire';
     }
     // ***************************************************************
 
 
-    // email
+    // EMAIL
     // Nettoyage et vérification
     $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
     $isOk = filter_var($mail, FILTER_VALIDATE_EMAIL);
@@ -46,20 +53,48 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
     if(empty($errorsArray)){
 
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-        $user = new User($login, $mail, $passwordHash);
+        $user = new User($lastname, $mail, $passwordHash);
         $user->save();
-        //generation du lien
-        $link = $_SERVER['REQUEST_SCHEME']. '://' .$_SERVER['HTTP_HOST'].'/controllers/validateUserCtrl.php?jwt='.$mail;
+
+        $payload = ['mail'=>$mail, 'exp'=>(time() + 600)];
+        $jwt = JWT::generate_jwt($payload);
+
+        $link = $_SERVER['REQUEST_SCHEME']. '://' .$_SERVER['HTTP_HOST'].'/controllers/validateUserCtrl.php?jwt='.$jwt;
         $message = '
         Veuillez cliquer sur le lien suivant:<br>
         <a href="'.$link.'">Activation</a>
         ';
-        mail($mail, 'Validation de votre inscription', $message);
-        
-    }
 
+        //Create an instance; passing `true` enables exceptions
+//         $mailer = new PHPMailer(true);
+
+//         try {
+//             $mailer->isSMTP();                                            //Send using SMTP
+//             $mailer->Host       = 'smtp.gmail.com';
+//             $mailer->SMTPAuth   = true;                                   //Enable SMTP authentication
+//             $mailer->Username   = 'thierry.lachat@novei.fr';                     //SMTP username
+//             $mailer->Password   = 'xvhvdzqjvsdjzmaw';                               //SMTP password
+//             $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
+//             $mailer->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        
+//             $mailer->setFrom('thierry.lachat@novei.fr', 'Administrateur JWT');
+//             $mailer->addAddress($mail, $lastname);
+        
+//             $mailer->isHTML(true);                                  //Set email format to HTML
+//             $mailer->Subject = 'Validation de votre inscription';
+//             $mailer->Body    = $message;
+
+//             $mailer->send();
+// die;
+//         } catch (Exception $e) {
+//             throw $e;
+//         }
+        
+//     }
+
+}
 }
 
 include(dirname(__FILE__).'/../views/templates/header.php');
-include(dirname(__FILE__).'/../views/signup.php');
+    include(dirname(__FILE__).'/../views/signup.php');
 include(dirname(__FILE__).'/../views/templates/footer.php');

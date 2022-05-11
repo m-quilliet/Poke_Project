@@ -8,3 +8,5 @@
         '1'=> 'Vous n\'étes pas connecté à la base de donnée.',
         '2'=>'erreur 2'
     ]);
+    // Mot de passe pour générer mes clés HMAC
+    define('SECRET_256', 'sdf989gfd_è-gfd');

@@ -1,14 +1,33 @@
 <?php
 require_once dirname(__FILE__) . '/../utils/init.php';
+require_once dirname(__FILE__) . '/../helpers/jwt.php';
 
-require_once dirname(__FILE__) . '/../models/Users.php';
+require_once dirname(__FILE__) . '/../models/User.php';
 
-$mail = trim(filter_input(INPUT_GET, 'mail', FILTER_SANITIZE_EMAIL));
+$jwt = $_GET['jwt'];
 
-$userByMail = User::getByMail($mail);
+if(!JWT::is_jwt_valid($jwt)){
+    $message = 'Token non valide';
+} else {
+    //Décoder le token, et controler
+    $datas = JWT::get($jwt);
 
-$userByMail->validated_at = date('Y-m-d H:i:s');
+    $userByMail = User::getByMail($datas->mail);
+    if($userByMail instanceof PDOException){
+        $message = 'Ce mail n\'existe pas';
+    } else {
+        if(!is_null($userByMail->validated_at)){
+            $message = 'Votre compte a déjà été activé';
+        } else {
+            $userByMail->validated_at = date('Y-m-d H:i:s');
+    
+            $user = new User($userByMail->lastname, $userByMail->mail, $userByMail->password, $userByMail->validated_at);
+            
+            $user->update($userByMail->id);
+        
+            $message = 'Votre compte a bien été activé';
+        }
+    }
+}
 
-$user = new User($userByMail->login, $userByMail->mail, $userByMail->password, $userByMail->validated_at);
-
-$user->update($userByMail->id);
+echo $message;
