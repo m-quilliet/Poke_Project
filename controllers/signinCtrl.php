@@ -6,7 +6,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
     $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
     $password = $_POST['password'];
 
-    $user = User::getByMail($mail);
+    $user = Users::getByMail($mail);
 
     if($user instanceOf PDOException){
         $errorsArray['Connection'] = 'Votre email n\'est pas valide.';
@@ -40,5 +40,5 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
 
 
 include(dirname(__FILE__).'/../views/templates/header.php');
-    include(dirname(__FILE__).'/../views/signin.php');
+include(dirname(__FILE__).'/../views/signin.php');
 include(dirname(__FILE__).'/../views/templates/footer.php');

@@ -2,7 +2,7 @@
         //on va faire insertion en base de donnée
     define ('DSN','mysql:dbname=pokemonProject;host=localhost;charset=utf8');
     define ('USER','Pokemon_user');
-    define ('PASSWORD','e2RTpsuC7AH2]cqx');
+    define ('PASSWORD','e2RTpsuC7AH2]Cqx');
     define('ERROR_ARRAY',[
         '0'=>'erreur générique',
         '1'=> 'Vous n\'étes pas connecté à la base de donnée.',
@@ -10,3 +10,6 @@
     ]);
     // Mot de passe pour générer mes clés HMAC
     define('SECRET_256', 'sdf989gfd_è-gfd');
+    // définir les roles des utilisateurs
+    define('RIGHTS' , array('admin' => 1983, 
+'user' => 2013));                              //ROLES

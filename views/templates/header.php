@@ -25,9 +25,6 @@
                 <div id="navbarCollapse" class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="" class="nav-link active">ACCUEIL</a>
-                        </li>
-                        <li class="nav-item">
                             <a href="" class="nav-link active">QUIZZ</a>
                         </li>
                         <li class="nav-item">
@@ -37,19 +34,29 @@
                             <a href="" class="nav-link active">CONTACT</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/controllers/dashboard/listUserCtrl.php" class="nav-link active">DASHBOARD</a>
+                            <a href="/../../views/dashboard/templates/headerDash.php" class="nav-link active">DASHBOARD</a>
                         </li>
                     </ul>
                 </div>
                 <div class="mt-5">
                     <?php if(empty($_SESSION["user"])){?>
-                    <a class="btn btn-info" href="/controllers/signupCtrl.php">Connexion</a>
-
-                    <a class="btn btn-info" href="/controllers/signinCtrl.php">Inscription</a>
+                    <li class="nav-item">    
+                        <a class="nav-link active px-4" href="/controllers/signinCtrl.php">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active px-4" href="/controllers/userAddCtrl.php">Inscription</a>
+                        
+                    </li>
                     <?php } else {?>
-
-                    <a class="btn btn-warning" href="/controllers/logoutCtrl.php">Déconnexion</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item"href="#">Settings</a></li>
+                            <li><a class="dropdown-item"href="#">Messages</a></li>
+                            <li><a class="dropdown-item"href="/controllers/logoutCtrl.php">Déconnexion</a></li>
+                    </li>
                     <?php } ?>
+                    </ul>
                 </div>
             </nav>   
     </header>

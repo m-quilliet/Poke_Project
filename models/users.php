@@ -2,7 +2,7 @@
 require_once(dirname(__FILE__) . '/../utils/Database.php');
 
 
-class User{
+class Users{
 
     private int $_id;
     private string $_login;
@@ -11,13 +11,15 @@ class User{
     private string $_registered_at;
     private ?string $_validated_at;
     private int $_id_rights;
+
     
 
-    public function __construct(string $login, string $mail, string $password, ?string $validated_at = NULL){
-        
+    public function __construct(string $login='', string $mail='', string $password='',$registered_at='', ?string $validated_at = NULL){
+    
         $this->setLogin($login);
         $this->setMail($mail);
         $this->setPassword($password);
+        $this->setRegisteredAt($registered_at);
         $this->setValidatedAt($validated_at);
 
 
@@ -55,6 +57,14 @@ class User{
         return $this->_password;
     }
 
+    public function setRegisteredAt(?string $registered_at){
+        $this->_registered_at = $registered_at;
+    }
+
+    public function getRegisteredAt(){
+        return $this->_registered_at;
+    }
+
     public function setValidatedAt(?string $validated_at){
         $this->_validated_at = $validated_at;
     }
@@ -62,17 +72,15 @@ class User{
     public function getValidatedAt(){
         return $this->_validated_at;
     }
-
-    public function setId_rights(int $id_rights){
-        $this->_id = $id_rights;
+    public function setIdRights(int $id_rights){
+        $this->_id_rights = $id_rights;
     }
 
-    public function getId_rights(){
+    public function getIdRights(){
         return $this->_id_rights;
-    }
+    }   
 
-    public static function isMailExists(string $mail): bool
-    {
+    public static function isMailExists(string $mail): bool{
         try {
             $sql = 'SELECT * FROM `users` WHERE `mail` = :mail';
 
@@ -82,17 +90,17 @@ class User{
 
             return empty($sth->fetchAll()) ? false : true;
 
-        } catch (\PDOException $e) {
+        } catch (PDOException $e) {
             return false;
         }
     }
 
 
-    public function save(){
+    public function add(){
         try {
             // On créé la requête avec des marqueurs nominatifs
-            $sql = 'INSERT INTO `users` (`login`, `mail`, `password`) 
-                VALUES (:login, :mail, :password);';
+            $sql = 'INSERT INTO `users` (`login`, `mail`, `password`, `registered_at`, `id_rights`) 
+                VALUES (:login, :mail, :password, :registered_at, :id_rights);';
 
             // On prépare la requête
             $sth = Database::getInstance()->prepare($sql);
@@ -101,11 +109,15 @@ class User{
             $sth->bindValue(':login', $this->getLogin(), PDO::PARAM_STR);
             $sth->bindValue(':mail', $this->getMail(), PDO::PARAM_STR);
             $sth->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
+            $sth->bindValue(':registered_at', $this->getRegisteredAt(), PDO::PARAM_STR);
+            // $sth->bindValue(':id_rights', 2013, PDO::PARAM_INT);
+            $sth->bindValue(':id_rights',$this->getIdRights(),PDO::PARAM_INT);
+
             // On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
             return $sth->execute();
         } catch (PDOException $e) {
             // On retourne false si une exception est levée
-            return false;
+            echo $e->getMessage();
         }
     }
 
@@ -124,7 +136,7 @@ class User{
                 return $user;
             }
 
-        } catch (\PDOException $e) {
+        } catch (PDOException $e) {
             return $e;
         }
     }
@@ -145,9 +157,29 @@ class User{
             $sth->bindValue(':id', $id, PDO::PARAM_INT);
             return $sth->execute();
 
-        } catch (PDOException $ex) {
+        } catch (PDOException $e) {
             return false;
         }
     }
+    public function validated($mail,$validated_at): bool
+    {
+        try {
 
+            $sql = 'UPDATE `users` SET  `validated_at` = :validated_at
+                    WHERE `mail` = :mail';
+
+            $sth = Database::getInstance()->prepare($sql);
+
+            $sth->bindValue(':mail',$mail);
+        
+            $sth->bindValue(':validated_at', $validated_at);
+        
+            return $sth->execute();
+
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+    //faire méthode delete
+   
 }

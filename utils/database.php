@@ -15,7 +15,7 @@ class Database{
             }
             
         }catch(PDOException $e){
-           echo 'erreur de connexion à la BDD : '. $e->getMessage();
+            echo 'erreur de connexion à la BDD : '. $e->getMessage();
         }
         return self::$_pdo;
 
