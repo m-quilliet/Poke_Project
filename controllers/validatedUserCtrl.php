@@ -15,7 +15,7 @@ if(!JWT::is_jwt_valid($jwt)){
     $datas = JWT::get($jwt);
 
     $userByMail = Users::getByMail($datas->mail);
- 
+
     if($userByMail instanceof PDOException){
         $message = 'Ce mail n\'existe pas';
     } else {

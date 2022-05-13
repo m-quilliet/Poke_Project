@@ -1,0 +1,32 @@
+section {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100vh;
+}
+.card-header {
+    background-color: #48AEBC;
+}
+.card-quiz {
+    flex-direction: column;
+    border-color: #F39A3E !important;
+}
+.btn-bleu { 
+    background-color: #48AEBC;
+    margin-top: 2rem;
+    
+}
+.bg-yellow {
+    background-color: #F9C751;
+}
+.card-body {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+.card-text {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.form-check-input:checked {
+    background-color: #48AEBC;
+    border-color: #48AEBC;
+}
