@@ -57,7 +57,6 @@
                 </div>
                 <div class="table-responsive">
                   <table class="table table-striped" id="example">
-
                     <tr>
                       <th>LOGIN</th>
                       <th>MAIL</th>
@@ -67,8 +66,7 @@
                         <tr>
                             <td><?=$users->login ?></td>
                             <td><?=$users->mail ?></td>
-                            <!-- <td><a id="info" href="/controllers/profilAppointmentController.php?id=<?= $user->idAppointment ?>"><img src="/public/assets/img/iconEye.png" alt="icone info"></a></td> -->
-                            <td><a href="/controllers/deleteCtlr.php?id=<?= $user->id?>"><img src="/public/assets/img/delete-30.png"></a></td>
+                            <td><a href="/controllers/dashboard/deleteUserCtrl.php?id=<?= $users->id?>"><img src="/public/assets/img/delete-30.png"></a></td>
                         </tr>
                     <?php endforeach ?>
                   </table>

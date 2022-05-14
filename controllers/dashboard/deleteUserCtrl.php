@@ -11,8 +11,9 @@ if (!empty($_GET)) {
 
     if (Users::deleteUsers($idUsers)) {
 
-        $user = new Users();
-        $user->deleteUsers($idUsers);
+        $users = new Users();
+        $users->deleteUsers($idUsers);
+
         header ('location: /controllers/dashboard/headerDashCtrl.php');
         die;
 

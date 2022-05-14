@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/public/assets/css/<?=$homePageStyle?>">
     <link rel="stylesheet" href="/public/assets/css/<?=$quizStyle?>">
     <link rel="stylesheet" href="/public/assets/css/<?=$userDashStyle?>">
+    <link rel="stylesheet" href="/public/assets/css/<?=$profilUserStyle?>">
     <title>PokéMonde</title>
 </head>
 <body>

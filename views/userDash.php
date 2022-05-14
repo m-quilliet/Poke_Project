@@ -4,7 +4,7 @@
         <a href="#" class="brand-logo">
             <i class="fas fa-anchor"></i> <span>BRAND</span></a></header>
         <nav class="dashboard-nav-list">
-            <a href="#" class="dashboard-nav-item">
+            <a href="/controllers/userDashCtrl.php" class="dashboard-nav-item">
                 <i class="fas fa-home"></i>Home 
             </a>
             <a href="#" class="dashboard-nav-item active">
@@ -13,7 +13,7 @@
             <a href="#" class="dashboard-nav-item">
                 <i class="fas fa-cogs"></i> Paramétres 
             </a>
-            <a href="#" class="dashboard-nav-item">
+            <a href="/controllers/profilUserCtrl.php" class="dashboard-nav-item">
                 <i class="fas fa-user"></i> Profil 
             </a>
             <div class="nav-item-divider"></div>

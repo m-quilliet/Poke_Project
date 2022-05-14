@@ -200,7 +200,7 @@ class Users{
             } else {
                 return $sth->fetchAll();
             }
-        } catch (PDOException $ex) {
+        } catch (PDOException $e) {
             return [];
         }
     }

@@ -5,7 +5,7 @@ require_once(dirname(__FILE__).'/../../models/Users.php');
 
 $headerDashStyle= 'headerDashStyle.css';
 
- $getAll= Users::getAll();//$ preier nom que j'ai ds ma boucle views
+ $getAll= Users::getAll();//$ premier nom que j'ai ds ma boucle views
 
 
 

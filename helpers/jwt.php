@@ -31,7 +31,6 @@ class JWT{
     
 
 
-        // check the expiration time - note this will cause an error if there is no 'exp' claim in the jwt
         $expiration = json_decode($payload)->exp;
 
         $is_token_expired = ($expiration - time()) < 0;
