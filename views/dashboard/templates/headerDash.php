@@ -32,7 +32,7 @@
                           </a>
                       </li>
                       <li>
-                          <a href="#" class="nav-link px-0 align-middle">
+                          <a href="/../../controllers/quizCtrl.php" class="nav-link px-0 align-middle">
                           <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">QUIZ</span>
                           </a>
                       </li>
@@ -42,7 +42,7 @@
                       </a>
                       </li>
                       <li>
-                          <a href="#" class="nav-link px-0 align-middle">
+                          <a href="/controllers/logoutCtrl.php" class="nav-link px-0 align-middle">
                           <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">SE DECONNECTER</span> 
                       </a>
                       </li>
@@ -57,53 +57,26 @@
                 </div>
                 <div class="table-responsive">
                   <table class="table table-striped" id="example">
+
                     <tr>
-                      <th>Heading 1</th>
-                      <th>Heading 2</th>
-                      <th>Heading 3</th>
-                      <th>Heading 4</th>
-                      <th>Heading 5</th>
-                      <th>Heading 6</th>
+                      <th>LOGIN</th>
+                      <th>MAIL</th>
+                      <th>SUPPRIMER</th>
                     </tr>
-                    <tr>
-                      <td>Content</td>
-                      <td>Content</td>
-                      <td>Content</td>
-                      <td>Content</td>
-                      <td>Content</td>
-                      <td>Content</td>
-                    </tr>
-                    <tr>
-                      <td>Content</td>
-                      <td>Content</td>
-                      <td>Content</td>
-                      <td>content</td>
-                      <td>content</td>
-                      <td>content</td>
-                    </tr>
-                    <tr>
-                      <td>Content</td>
-                      <td>Content</td>
-                      <td>Content</td>
-                      <td>content</td>
-                      <td>content</td>
-                      <td>content</td>
-                    </tr>
-                    <tr>
-                      <td>Content</td>
-                      <td>Content</td>
-                      <td>Content</td>
-                      <td>content</td>
-                      <td>content</td>
-                      <td>content</td>
-                    </tr>
+                    <?php foreach ($getAll as $users) : ?>
+                        <tr>
+                            <td><?=$users->login ?></td>
+                            <td><?=$users->mail ?></td>
+                            <!-- <td><a id="info" href="/controllers/profilAppointmentController.php?id=<?= $user->idAppointment ?>"><img src="/public/assets/img/iconEye.png" alt="icone info"></a></td> -->
+                            <td><a href="/controllers/deleteCtlr.php?id=<?= $user->id?>"><img src="/public/assets/img/delete-30.png"></a></td>
+                        </tr>
+                    <?php endforeach ?>
                   </table>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
     </div>
 </div>
 

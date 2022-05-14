@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/assets/css/<?=$homePageStyle?>">
     <link rel="stylesheet" href="/public/assets/css/<?=$quizStyle?>">
+    <link rel="stylesheet" href="/public/assets/css/<?=$userDashStyle?>">
     <title>PokéMonde</title>
 </head>
 <body>
@@ -25,9 +26,7 @@
                         <li class="nav-item">
                             <a href="/../../controllers/quizCtrl.php" class="nav-link active">QUIZZ</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link active">MEMO</a>
-                        </li>
+
                         <li class="nav-item">
                             <a href="" class="nav-link active">CONTACT</a>
                         </li>
@@ -42,11 +41,15 @@
                             <?php if(($_SESSION['user']->id_rights === '1983')){
                                 ?>
                             <li class="nav-item">
-                                <a href="/../../views/dashboard/templates/headerDash.php" class="nav-link active">dashADMIN</a>
+                                <a href="/../../controllers/dashboard/headerDashCtrl.php" class="nav-link active">dashADMIN</a>
                             </li>
+                            <li class="nav-item">
+                                <a href="/../../controllers/quizCtrl.php" class="nav-link active">Quiz</a>
+                            </li>
+                            
                         <?php } else { ?>
                             <li class="nav-item">
-                                <a href="/../../.php" class="nav-link active">dashUSER</a>
+                                <a href="/../../controllers/userDashCtrl.php" class="nav-link active">dashUSER</a>
                             </li>
 
                         <?php } ?>

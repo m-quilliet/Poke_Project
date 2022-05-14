@@ -95,7 +95,7 @@ class Users{
         }
     }
 
-
+// METHODE CREATE
     public function add(){
         try {
             // On créé la requête avec des marqueurs nominatifs
@@ -131,17 +131,16 @@ class Users{
             $user = $sth->fetch();
 
             if(!$user){
-                throw new PDOException('User not found');
+                throw new PDOException('Utilisateurs non-trouvés');
             } else {
                 return $user;
             }
-
         } catch (PDOException $e) {
             return $e;
         }
     }
 
-
+// METHODE UPDATE
     public function update($id): bool
     {
         try {
@@ -161,6 +160,8 @@ class Users{
             return false;
         }
     }
+
+    //validation par lien mail
     public function validated($mail,$validated_at): bool
     {
         try {
@@ -180,6 +181,44 @@ class Users{
             return false;
         }
     }
-    //faire méthode delete
-   
+    //METHODE READ
+    public static function getAll(): array // Méthode statique car il est inutile d'instancier, car pas d'hydratation
+    {
+
+        try {
+            // On stocke une instance de la classe PDO dans une variable
+            $pdo = Database::getInstance();
+
+            // On créé la requête
+            $sql = 'SELECT * FROM `users`';
+
+            // On exécute la requête
+            $sth = $pdo->query($sql);
+
+            if ($sth === false) {
+                throw new PDOException();
+            } else {
+                return $sth->fetchAll();
+            }
+        } catch (PDOException $ex) {
+            return [];
+        }
+    }
+
+    //METHODE DELETE
+    public static function deleteUsers($idUsers): bool
+    {
+        $sql = "DELETE 
+            FROM `users`
+            WHERE `id`=:id;";
+
+        try {
+            $sth = Database::getInstance()->prepare($sql);
+            $sth->bindValue(':id', $idUsers, PDO::PARAM_INT);
+            return $sth->execute();
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
 }
