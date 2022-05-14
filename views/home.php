@@ -1,5 +1,5 @@
-<?php if (!empty($_SESSION["user"])) { ?>
-    Bonjour <?= $_SESSION["user"]->login; ?>
+<?php if (!empty($user)) { ?>
+    Bonjour <?= $user->getLogin(); ?>
 <?php } ?>
     <section>
       <div class="container-fluid">

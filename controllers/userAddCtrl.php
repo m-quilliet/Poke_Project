@@ -1,10 +1,11 @@
 <?php
 require_once(dirname(__FILE__) . '/../utils/init.php');
-require_once(dirname(__FILE__) . '/../models/Users.php');
 require_once(dirname(__FILE__) . '/../helpers/JWT.php');
-
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+// si il ya une variable user c'est que mon utilisateur est connecté sinon pas connecté
+if(!isset($user))
+{
+    $user= new Users();
+}
 
 if($_SERVER["REQUEST_METHOD"] == 'POST'){
 
@@ -32,30 +33,34 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
         if(!$isOk){
             $errorsArray['mail_error'] = 'Le mail n\'est pas valide';
         }
-        if(Users::isMailExists($mail)){
+        if(Users::isMailExists($mail,$user->getId())){
             $errorsArray['mail_error'] = 'Ce mail existe déjà';
         }
     }else{
         $errorsArray['mail_error'] = 'Le champ est obligatoire';
     }
+    if(!empty($_POST['password'])|| !$user->getId()){
     //verification password et hashage
-
-    $password = $_POST['password'];
-    $password2 = $_POST['password2'];
-    $isOk = filter_var($login, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/'.REGEXP_PASSWORD.'/')));
-    if($password != $password2){
-        $errorsArray['password_error'] = 'Les mots de passe ne correspondent pas';
+        $password = $_POST['password'];
+        $password2 = $_POST['password2'];
+        $isOk = filter_var($login, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/'.REGEXP_PASSWORD.'/')));
+        if($password != $password2){
+            $errorsArray['password_error'] = 'Les mots de passe ne correspondent pas';
+        }
     }
 
     $id_rights = RIGHTS['user']; // ROLES
 
-    if(empty($errorsArray)){
-        // $idRight = 
-
-        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+    if(empty($errorsArray)){       
         $registered_at = date('Y-m-d H:i:s');
-        $user = new Users($login, $mail, $passwordHash,$registered_at);
-        $user->add();
+        $user->setLogin($login);
+        $user->setMail($mail);
+
+        if(isset ($password)){
+            $user->setPassword($password);
+        }
+
+        $user->save();
         
         $headers[] = 'MIME-Version: 1.0';
         $headers[] = 'Content-type: text/html; charset=iso-8859-1';
@@ -69,12 +74,13 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
         
 
         mail($mail, 'Validation de votre inscription', $message,implode("\r\n", $headers));
-            $_SESSION['user'] = $user;
+            $_SESSION['id'] = $user->getId();
             header('location: /controllers/homeCtrl.php');
 
 }
 }
 
 include(dirname(__FILE__).'/../views/templates/header.php');
+
 include(dirname(__FILE__).'/../views/userAdd.php');
 include(dirname(__FILE__).'/../views/templates/footer.php');

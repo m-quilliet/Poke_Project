@@ -11,5 +11,6 @@ $users = Users::getAll($id);
 if ($users instanceof PDOException) {
     $error = $users->getMessage();
 }
-
+include(dirname(__FILE__).'/../views/templates/header.php');
 include(dirname(__FILE__) . '/../views/profilUser.php');
+include(dirname(__FILE__).'/../views/templates/footer.php');

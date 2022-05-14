@@ -13,14 +13,14 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
     }
 
     if(empty($errorsArray)){
-        $passwordHash = $user->password;
+        $passwordHash = $user->getPassword();
         $result = password_verify($password, $passwordHash);
 
         if(!$result){
             $errorsArray['Connection'] = 'Mot de passe invalide';
         }
 
-        if(is_null($user->validated_at)){
+        if(is_null($user->getValidatedAt())){
             $errorsArray['Connection'] = 'Votre compte n\'est pas encore activé';
         }
     }
@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
 
     if(empty($errorsArray)){
 
-        $_SESSION['user'] = $user;
+        $_SESSION['id'] = $user->getId();
         header('location: /controllers/homeCtrl.php');
         die;
         

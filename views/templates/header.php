@@ -31,7 +31,7 @@
                         <li class="nav-item">
                             <a href="" class="nav-link active">CONTACT</a>
                         </li>
-                        <?php if(empty($_SESSION['user']) && !isset($_SESSION['user'])){?>
+                        <?php if(empty($user)){?>
                         <li class="nav-item">    
                             <a class="btn btn-info" href="/controllers/signinCtrl.php">Connexion</a>
                         </li>
@@ -39,7 +39,7 @@
                             <a class="btn btn-info" href="/controllers/userAddCtrl.php">Inscription</a>
                         </li>
                         <?php } else {?>
-                            <?php if(($_SESSION['user']->id_rights === '1983')){
+                            <?php if(($user->getIdRights() == '1983')){
                                 ?>
                             <li class="nav-item">
                                 <a href="/../../controllers/dashboard/headerDashCtrl.php" class="nav-link active">dashADMIN</a>

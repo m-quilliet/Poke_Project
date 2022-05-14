@@ -3,8 +3,7 @@ require_once dirname(__FILE__) . '/../utils/init.php';
 require_once dirname(__FILE__) . '/../helpers/jwt.php';
 require_once dirname(__FILE__) . '/../models/Users.php';
 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+
 
 $jwt = $_GET['jwt'];
 

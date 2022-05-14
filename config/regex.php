@@ -13,7 +13,7 @@ define('REGEXP_PASSWORD','^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S
 (?=\S*[a-z]): au moins une minuscule
 (?=\S*[A-Z]): au moins une majuscule
 (?=\S*[\d]): au moins un chiffre
-(?=\S*[\W]): au moins un caractére spécial
+(?=\S*[\W]): au moins un caractére spécial*/
 
 
 
