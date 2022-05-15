@@ -10,13 +10,11 @@ class Users{
     private string $password='';
     private string $registered_at='';
     private ?string $validated_at='';
-    private int $id_rights=0;
+    private int $id_rights=2013;
 
-    
 
     public function __construct(){
-
-   } 
+    } 
 
     public function setId(int $id){
         $this->id = $id;
@@ -53,8 +51,6 @@ class Users{
         return $this->password;
     }
 
-
-
     public function setValidatedAt(?string $validated_at){
         $this->validated_at = $validated_at;
     }
@@ -85,6 +81,8 @@ class Users{
             return false;
         }
     }
+
+    // METHODE DE CRÉATION ET MODIFICATION
     public function save(){
 
             // si user existe en base on le modifie
@@ -92,10 +90,10 @@ class Users{
                 $sql = 'UPDATE `users` SET `login` = :login, `mail` = :mail, `password` = :password, `validated_at` = :validated_at
                 WHERE `id` = :id';   
             }
+
             // si il n'existe pas on l'insert en base
             else { 
-            
-            // On créé la requête avec des marqueurs nominatifs
+             // On créé la requête avec des marqueurs nominatifs
                 $sql = 'INSERT INTO `users` (`login`, `mail`, `password`, `id_rights`) 
                     VALUES (:login, :mail, :password,  :id_rights);';
             }
@@ -108,8 +106,6 @@ class Users{
             $sth->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
             // $sth->bindValue(':id_rights', 2013, PDO::PARAM_INT);
 
-
-
             if($this->id != 0) {
                 $sth->bindValue(':validated_at', $this->getValidatedAt());
                 $sth->bindValue(':id',$this->id, PDO::PARAM_INT);
@@ -117,6 +113,7 @@ class Users{
                 $sth->bindValue(':id_rights',$this->getIdRights(),PDO::PARAM_INT);
             }
             // On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
+
             return $sth->execute();
 
 
@@ -218,5 +215,21 @@ class Users{
             return false;
         }
     }
+    // Methode nouvel utilisateur ou pas
+    function isNew():bool { 
+        return $this->id === 0;
 
+    }
+// recuperer utilisateur qui est connecté
+    public static function  current(){
+        $user= null;
+        if(!empty($_SESSION['id'])){
+            try{
+                $user= Users::get($_SESSION['id']);
+            } catch(Exception $e){
+                session_destroy();
+            }
+        } 
+        return $user;
+    }
 }

@@ -61,23 +61,27 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
         }
 
         $user->save();
-        
-        $headers[] = 'MIME-Version: 1.0';
-        $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+        if($user->isNew()) {
+            $headers[] = 'MIME-Version: 1.0';
+            $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+    
+            $payload = ['mail'=>$mail, 'exp'=>(time() + 600)];
+            $jwt = JWT::generate_jwt($payload);
 
-        $payload = ['mail'=>$mail, 'exp'=>(time() + 600)];
-        $jwt = JWT::generate_jwt($payload);
-    //lien de validation
-        $link = $_SERVER['REQUEST_SCHEME']. '://' .$_SERVER['HTTP_HOST'].'/controllers/validatedUserCtrl.php?jwt='.$jwt;
-        $message = 'Veuillez cliquer sur le lien suivant:<br>
-        <a href="'.$link.'">Activation</a>';
-        
+        //lien de validation
+            $link = $_SERVER['REQUEST_SCHEME']. '://' .$_SERVER['HTTP_HOST'].'/controllers/validatedUserCtrl.php?jwt='.$jwt;
+            $message = 'Veuillez cliquer sur le lien suivant:<br>
+            <a href="'.$link.'">Activation</a>';
 
-        mail($mail, 'Validation de votre inscription', $message,implode("\r\n", $headers));
-            $_SESSION['id'] = $user->getId();
+            mail($mail, 'Validation de votre inscription', $message,implode("\r\n", $headers));
+            //si nouvelle utilisateur on renvoie vers la home
             header('location: /controllers/homeCtrl.php');
+        } else {
+            //si pas un nouveau vers son profil
+            header('location: /controllers/profilUserCtrl.php');
+        }
 
-}
+    }
 }
 
 include(dirname(__FILE__).'/../views/templates/header.php');

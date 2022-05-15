@@ -6,21 +6,21 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
     $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
     $password = $_POST['password'];
 
-    $user = Users::getByMail($mail);
+    $userFromMail = Users::getByMail($mail);
 
-    if($user instanceOf PDOException){
+    if($userFromMail instanceOf PDOException){
         $errorsArray['Connection'] = 'Votre email n\'est pas valide.';
     }
 
     if(empty($errorsArray)){
-        $passwordHash = $user->getPassword();
+        $passwordHash = $userFromMail->getPassword();
         $result = password_verify($password, $passwordHash);
 
         if(!$result){
             $errorsArray['Connection'] = 'Mot de passe invalide';
         }
 
-        if(is_null($user->getValidatedAt())){
+        if(is_null($userFromMail->getValidatedAt())){
             $errorsArray['Connection'] = 'Votre compte n\'est pas encore activé';
         }
     }
@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
 
     if(empty($errorsArray)){
 
-        $_SESSION['id'] = $user->getId();
+        $_SESSION['id'] = $userFromMail->getId();
         header('location: /controllers/homeCtrl.php');
         die;
         
