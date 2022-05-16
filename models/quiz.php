@@ -2,226 +2,93 @@
 require_once(dirname(__FILE__) . '/../utils/database.php');
 
 
-class Quiz{
-
-    private int $_id;
-    private string $_name;
-    private bool $_active;
-    private int $_id_categories;
-    private int $_id_users;
-    private object $_pdo;
+class Quiz {
+    private int $id;
+    private string $name='';
+    private int $active='';
+    private int $id_categories;
+    private int $id_users;
 
 
-    public function setId(int $id): void
-    {
-        $this->_id = $id;
-    }
 
-    public function getId(): int
-    {
-        return $this->_id;
-    }
-
-    public function setName(string $name): void
-    {
-        $this->_name = $name;
-    }
-
-    public function getName(): string
-    {
-        return $this->_name;
-    }
-
-    public function setActive(bool $active): void
-    {
-        $this->_active = $active;
-    }
-
-    public function getActive(): bool
-    {
-        return $this->_active
-    }
-
-    public function setId_categories(bool $id_categories): void
-    {
-        $this->_id_categories = $id_categories;
-    }
-    public function getId_users(): int
-    {
-        return $this->_id_users;
-    }
-
-    public function getId_Users(): int
-    {
-        return $this->_id_users;
-    }
-
-    /**
-     * Méthode magique qui permet d'hydrater notre objet 'patient'
-     * 
-     * @return boolean
-     */
-    public function __construct(string $_name,bool $_active,int $_id_categories,int $_id_users){
-
-        // Hydratation de l'objet contenant la connexion à la BDD
-        $this->setName($name);
-        $this->setActive($active);
-        $this->setId_categories($id_categories);
-        $this->setId_users($id_users);
-        $this->_pdo = Database::getInstance();
+    public function __construct(){
     }
 
 
-    /**
-     * Méthode permettant de récupérer un quiz
-     * @param int $id
-     * 
-     * @return object
-     */
-    public static function get(int $id): object
-    {
+    public function setId(int $id){
+        $this->id = $id;
+    }
 
-        try {
-
-            $sql = 'SELECT * FROM `quiz`
-                    INNER JOIN `users` ON `users`.`id` = `quiz`.`id_users`
-                    WHERE `quiz`.`id` = :id;';
-
-            $sth = Database::getInstance()->prepare($sql);
-
-            $sth->bindValue(':id', $id, PDO::PARAM_INT);
-
-            $result = $sth->execute();
-            if ($result === false) {
-                //Erreur générale
-                throw new PDOException(ERRORS[8]);
-            } else {
-                $quiz = $sth->fetch();
-                if ($quiz === false) {
-                    //Rdv non trouvé
-                    throw new PDOException(ERRORS[9]);
-                } else {
-                    return $quiz;
-                }
-            }
-        } catch (PDOException $e) {
-            return $e;
-        }
+    public function getId(){
+        return $this->id ;
     }
 
 
-    /**
-     * Méthode qui permet de créer un quiz
-     * 
-     * @return boolean
-     */
-    public function add(): bool{
+    public function setName(string $name){
+        $this->name = $name;
+    }
+    public function getName(){
+        return $this->name ;
+    }
 
-        try{
-            $sql = 'INSERT INTO `quiz` (`name`,`id_categories`,`id_users`) 
-                    VALUES (:name,:active,:id_categories;:id_users)';
-            $sth = $this->_pdo->prepare($sql);
 
-            $sth->bindValue(':name',$this->getName(),PDO::PARAM_STR);
-            $sth->bindValue(':active',$this->getActive(),PDO::PARAM_BOOL);
-            $sth->bindValue(':id_categories',$this->getId_categories(),PDO::PARAM_INT);
-            $sth->bindValue(':id_users',$this->getId_users(),PDO::PARAM_INT);
-            return $sth->execute();
-        }
-        catch(PDOException $e){
-            // On retourne false si une exception est levée
-            return false;
+    public function setactive(int $active){
+        $this->active = $active;
+    }
+
+    public function getActive(){
+        return $this->active ;
+    }
+
+
+    public function setIdCategories(int $id_categories){  
+        $this->id_categories = $id_categories;
+    }
+
+    public function getIdCategories(){ 
+        return $this->id_categories ;
+    } 
+    public function setIdUsers(int $id_users){  
+        $this->id_users = $id_users;
+    }
+
+    public function getIdUsers(){ 
+        return $this->id_users ;
+    } 
+
+    // METHODE DE CRÉATION ET MODIFICATION
+    public function save(){
+
+        // si quiz existe en base on le modifie
+        if($this->id != 0) {
+            $sql = 'UPDATE `quiz` SET `id` = :id, `name` = :name, `active`, `id_categories` = :id_categories, `id_users`= :id_users
+            WHERE `id` = :id';   
         }
 
-    }
-
-    /**
-     * Méthode qui permet de lister tous les rdv et leur patient
-     * 
-     * @return array
-     */
-    public static function getAll($id=NULL): array{
-
-        $pdo = Database::getInstance();
-
-        try{
-            $sql = '    SELECT `quiz`.`id` as `appointmentId`, `users`.`id` as `patientId`, `users`.*, `quiz`.* 
-                        FROM `quiz` 
-                        INNER JOIN `users`
-                        ON `quiz`.`idusers` = `users`.`id`';
-
-            if(!is_null($id)){
-                $sql .= ' WHERE `quiz`.`idusers` = :id';
-            }
-
-            $sql .= ' ORDER BY `quiz`.`dateHour` DESC';
-
-            $sth = $pdo->prepare($sql);
-
-            if(!is_null($id)){
-                $sth->bindValue(':id',$id,PDO::PARAM_INT);
-            }
-
-            if (!$sth->execute()) {
-                throw new PDOException();
-            } else {
-                return $sth->fetchAll();
-            }
-        } catch (PDOException $ex) {
-            return [];
+        // si il n'existe pas on l'insert en base
+        else { 
+         // On créé la requête avec des marqueurs nominatifs
+            $sql = 'INSERT INTO `users` (`login`, `mail`, `password`, `id_rights`) 
+                VALUES (:login, :mail, :password,  :id_rights);';
         }
+        // On prépare la requête
+        $sth = Database::getInstance()->prepare($sql);
 
-    }
+        //Affectation des valeurs aux marqueurs nominatifs
+        $sth->bindValue(':login', $this->getLogin(), PDO::PARAM_STR);
+        $sth->bindValue(':mail', $this->getMail(), PDO::PARAM_STR);
+        $sth->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
+        // $sth->bindValue(':id_rights', 2013, PDO::PARAM_INT);
 
-    /**
-     * Méthode qui permet de mettre à jour un rdv
-     * 
-     * @param int $id
-     * 
-     * @return bool
-     */
-    public function update(int $id) : bool{
-
-        try{
-            $sql = 'UPDATE `quiz` SET `name` = :name, `id_users` = :id_users
-                    WHERE `id` = :id';
-
-            $sth = $this->_pdo->prepare($sql);
-
-            $sth->bindValue(':name',$this->getName(),PDO::PARAM_STR);
-            $sth->bindValue(':active',$this->getActive(),PDO::PARAM_BOOL);
-            $sth->bindValue(':id_categories',$this->getId_categories(),PDO::PARAM_INT);
-            $sth->bindValue(':id_users',$this->getId_users(),PDO::PARAM_INT);
-
-            return $sth->execute();
+        if($this->id != 0) {
+            $sth->bindValue(':validated_at', $this->getValidatedAt());
+            $sth->bindValue(':id',$this->id, PDO::PARAM_INT);
+        } else{
+            $sth->bindValue(':id_users',$this->getIdUsers(),PDO::PARAM_INT);
         }
-        catch(PDOException $ex){
-            return false;
-        }
+        // On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
 
-    }
-
-
-    public static function delete($id):bool{
-
-        try{
-
-            $pdo = Database::getInstance();
-            $sql = 'DELETE FROM `quiz`
-                    WHERE `id` = :id;';
-
-            $sth = $pdo->prepare($sql);
-            $sth->bindValue(':id', $id, PDO::PARAM_INT);
-            $sth->execute();
-            
-            return ($sth->rowCount()<=0) ? false : true; 
-            
-        }
-        catch(PDOException $e){
-            return false;
-        }
-
-    }
+        return $sth->execute();
 
 
 }

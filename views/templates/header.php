@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="/public/assets/css/<?=$quizStyle?>">
     <link rel="stylesheet" href="/public/assets/css/<?=$userDashStyle?>">
     <link rel="stylesheet" href="/public/assets/css/<?=$profilUserStyle?>">
+   
+    
+    
     <title>PokéMonde</title>
 </head>
 <body>
@@ -18,19 +21,13 @@
     <header>
         <!-- Barre de navigation se transformant en menu burger pour mobile -->
             <nav class="navbar navbar-dark navbar-expand-sm bg-dark opacity-50 fixed-top">
-                <a href="/" class="navbar-brand">PokéMonde</a>
+                <a href="/" class="navbar-brand"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div id="navbarCollapse" class="collapse navbar-collapse">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="/../../controllers/quizCtrl.php" class="nav-link active">QUIZZ</a>
-                        </li>
 
-                        <li class="nav-item">
-                            <a href="" class="nav-link active">CONTACT</a>
-                        </li>
                         <?php if(empty($user)){?>
                         <li class="nav-item">    
                             <a class="btn btn-info" href="/controllers/signinCtrl.php">Connexion</a>
@@ -42,15 +39,15 @@
                             <?php if(($user->getIdRights() == '1983')){
                                 ?>
                             <li class="nav-item">
-                                <a href="/../../controllers/dashboard/headerDashCtrl.php" class="nav-link active">dashADMIN</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/../../controllers/quizCtrl.php" class="nav-link active">Quiz</a>
+                                <a class="btn btn-info"href="/../../controllers/dashboard/headerDashCtrl.php">dashADMIN</a>
                             </li>
                             
                         <?php } else { ?>
                             <li class="nav-item">
-                                <a href="/../../controllers/userDashCtrl.php" class="nav-link active">dashUSER</a>
+                                <a class="btn btn-info"href="/../../controllers/userDashCtrl.php">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-info"href="/../../controllers/userDashCtrl.php">DashUser</a>
                             </li>
 
                         <?php } ?>

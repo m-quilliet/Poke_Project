@@ -4,10 +4,14 @@
   outline: none;
 }
 
-body{
+#homeDash{
   font-family: 'Ubuntu', sans-serif;
-  min-height: 100%;
-  background-color: #337ab7;
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('/public/assets/img/red.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .absolute-wrapper{
     position: fixed;
