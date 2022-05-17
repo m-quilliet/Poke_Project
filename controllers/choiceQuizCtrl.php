@@ -1,8 +1,6 @@
 <?php
 require_once(dirname(__FILE__) . '/../utils/init.php');
 
-
-
 $errorsArray=[];
 // // // si il ya une variable user c'est que mon utilisateur est connecté sinon pas connecté
 // if(!isset($quiz))
@@ -29,14 +27,12 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
         // On crée une nouvelle instanciation et on hydrate en même temps (cf __construct)
         $quiz = new Quiz(0,$name);
 
-        $quiz->setIdCategories(1);
+        $quiz->getIdCategories(1);
 
-
-        $quiz->setIdUsers($_SESSION['id']);
+        $quiz->getIdUsers();
 
 
         $response = $quiz->save();
-
 
     }
 }

@@ -5,7 +5,7 @@
             <input type="text" class="form-control" id="" name="type" placeholder="saisir le titre">
         </div>
         <div class="col-12">
-                <button class="btn btn-primary" type="submit">Enregistrer le nom quiz</button>
+                <button class="btn btn-primary" type="submit"><?=$quiz->getId() ? 'Enregistrer': 'Modifier'?></button>
         </div>
     </form>
 </div>

@@ -16,7 +16,7 @@
                     <tr>
                         <td><?=$quiz->id?></td>
                         <td><?=$quiz->name?></td>
-                        <td><a href="/controllers/dashboard/deleteUserCtrl.php?id=<?= $quiz->id?>"><img src="/public/assets/img/delete-30.png"></a></td> 
+                        <td><a href="/controllers/deleteQuizCtrl.php?id=<?= $quiz->id?>"><img src="/public/assets/img/delete-30.png"></a></td> 
                     </tr>
                     <?php endforeach ?>
                 </table>
