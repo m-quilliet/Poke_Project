@@ -22,10 +22,6 @@
         <input type="text" class="form-control" id="login" name="login" value="<?=$user->getLogin()?>">
     </div>
     <button type="submit" class="btn btn-primary"href="/controllers/homeCtrl.php"><?=!$user->getId() ? "S'inscrire": 'Modification'?></button>
-    <?php
-    if(!$user->getId()){ 
-    ?>
-    <a class="btn btn-secondary" href="/controllers/signinCtrl.php">Déjà un compte ?</a>
-    <?php } ?>
+
 
 </form>

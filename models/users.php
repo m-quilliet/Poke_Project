@@ -2,71 +2,87 @@
 require_once(dirname(__FILE__) . '/../utils/Database.php');
 
 
-class Users{
+class Users
+{
 
-    private int $id=0;
-    private string $login='';
-    private string $mail='';
-    private string $password='';
-    private string $registered_at='';
-    private ?string $validated_at='';
-    private int $id_rights=2013;
+    private int $id = 0;
+    private string $login = '';
+    private string $mail = '';
+    private string $password = '';
+    private string $registered_at = '';
+    private ?string $validated_at = '';
+    private int $id_rights = 2013;
 
 
-    public function __construct(){
-    } 
+    public function __construct()
+    {
+    }
 
-    public function setId(int $id){
+    public function setId(int $id)
+    {
         $this->id = $id;
     }
 
-    public function getId(){
-        return $this->id ;
+    public function getId()
+    {
+        return $this->id;
     }
 
-    public function setLogin(string $login){
+    public function setLogin(string $login)
+    {
         $this->login = $login;
     }
 
-    public function getLogin(){
+    public function getLogin()
+    {
         return $this->login;
     }
-    public function getRegistered_at(){
+    public function getRegistered_at()
+    {
         return $this->registered_at;
     }
 
-    public function setMail(string $mail){
+    public function setMail(string $mail)
+    {
         $this->mail = $mail;
     }
 
-    public function getMail(){
+    public function getMail()
+    {
         return $this->mail;
-    }   
+    }
 
-    public function setPassword(string $password){
-        $this->password= password_hash($password, PASSWORD_DEFAULT);
-    }   
+    public function setPassword(string $password)
+    {
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
+    }
 
-    public function getPassword(){
+    public function getPassword()
+    {
         return $this->password;
     }
 
-    public function setValidatedAt(?string $validated_at){
+    public function setValidatedAt(?string $validated_at)
+    {
         $this->validated_at = $validated_at;
     }
 
-    public function getValidatedAt(){
+    public function getValidatedAt()
+    {
         return $this->validated_at;
     }
-    public function setIdRights(int $id_rights){
+    public function setIdRights(int $id_rights)
+    {
         $this->id_rights = $id_rights;
     }
 
-    public function getIdRights(){
+    public function getIdRights()
+    {
         return $this->id_rights;
-    }   
+    }
 
-    public static function isMailExists(string $mail,int $id=0): bool{
+    public static function isMailExists(string $mail, int $id = 0): bool
+    {
         try {
             $sql = 'SELECT * FROM `users` WHERE `mail` = :mail AND `id`<>:id';
 
@@ -76,65 +92,65 @@ class Users{
             $sth->execute();
 
             return empty($sth->fetchAll()) ? false : true;
-
         } catch (PDOException $e) {
             return false;
         }
     }
 
     // METHODE DE CRÉATION ET MODIFICATION
-    public function save(){
+    public function save()
+    {
 
-            // si user existe en base on le modifie
-            if($this->id != 0) {
-                $sql = 'UPDATE `users` SET `login` = :login, `mail` = :mail, `password` = :password, `validated_at` = :validated_at
-                WHERE `id` = :id';   
-            }
+        // si user existe en base on le modifie
+        if ($this->id != 0) {
+            $sql = 'UPDATE `users` SET `login` = :login, `mail` = :mail, `password` = :password, `validated_at` = :validated_at
+                WHERE `id` = :id';
+        }
 
-            // si il n'existe pas on l'insert en base
-            else { 
-             // On créé la requête avec des marqueurs nominatifs
-                $sql = 'INSERT INTO `users` (`login`, `mail`, `password`, `id_rights`) 
+        // si il n'existe pas on l'insert en base
+        else {
+            // On créé la requête avec des marqueurs nominatifs
+            $sql = 'INSERT INTO `users` (`login`, `mail`, `password`, `id_rights`) 
                     VALUES (:login, :mail, :password,  :id_rights);';
-            }
-            // On prépare la requête
-            $sth = Database::getInstance()->prepare($sql);
+        }
+        // On prépare la requête
+        $sth = Database::getInstance()->prepare($sql);
 
-            //Affectation des valeurs aux marqueurs nominatifs
-            $sth->bindValue(':login', $this->getLogin(), PDO::PARAM_STR);
-            $sth->bindValue(':mail', $this->getMail(), PDO::PARAM_STR);
-            $sth->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
-            // $sth->bindValue(':id_rights', 2013, PDO::PARAM_INT);
+        //Affectation des valeurs aux marqueurs nominatifs
+        $sth->bindValue(':login', $this->getLogin(), PDO::PARAM_STR);
+        $sth->bindValue(':mail', $this->getMail(), PDO::PARAM_STR);
+        $sth->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
+        // $sth->bindValue(':id_rights', 2013, PDO::PARAM_INT);
 
-            if($this->id != 0) {
-                $sth->bindValue(':validated_at', $this->getValidatedAt());
-                $sth->bindValue(':id',$this->id, PDO::PARAM_INT);
-            } else{
-                $sth->bindValue(':id_rights',$this->getIdRights(),PDO::PARAM_INT);
-            }
-            // On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
+        if ($this->id != 0) {
+            $sth->bindValue(':validated_at', $this->getValidatedAt());
+            $sth->bindValue(':id', $this->id, PDO::PARAM_INT);
+        } else {
+            $sth->bindValue(':id_rights', $this->getIdRights(), PDO::PARAM_INT);
+        }
+        // On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
 
-            return $sth->execute();
-
-
+        return $sth->execute();
     }
-    public static function get(int $id) :Users {
-            $sql = 'SELECT * FROM `users` WHERE `id` = :id';
+    public static function get(int $id): Users
+    {
+        $sql = 'SELECT * FROM `users` WHERE `id` = :id';
 
-            $sth = Database::getInstance()->prepare($sql);
-            $sth->bindValue(':id', $id, PDO::PARAM_INT);
-            $sth->execute();
-            $user = $sth->fetchObject('\Users');
+        $sth = Database::getInstance()->prepare($sql);
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        $sth->execute();
+        $user = $sth->fetchObject('\Users');
 
-            if(!$user){
-                throw new PDOException('Utilisateur non-trouvé');
-            } else {
-                return $user;
-            }
+        if (!$user) {
+            throw new PDOException('Utilisateur non-trouvé');
+        } else {
+            return $user;
+        }
     }
 
 
-    public static function getByMail(string $mail): object{
+    public static function getByMail(string $mail): object
+    {
         try {
             $sql = 'SELECT * FROM `users` WHERE `mail` = :mail';
 
@@ -143,7 +159,7 @@ class Users{
             $result = $sth->execute();
             $user = $sth->fetchObject('\Users');
 
-            if(!$user){
+            if (!$user) {
                 throw new PDOException('Utilisateurs non-trouvés');
             } else {
                 return $user;
@@ -156,7 +172,7 @@ class Users{
 
 
     //validation par lien mail
-    public function validated($mail,$validated_at): bool
+    public function validated($mail, $validated_at): bool
     {
         try {
 
@@ -165,12 +181,11 @@ class Users{
 
             $sth = Database::getInstance()->prepare($sql);
 
-            $sth->bindValue(':mail',$mail);
-        
-            $sth->bindValue(':validated_at', $validated_at);
-        
-            return $sth->execute();
+            $sth->bindValue(':mail', $mail);
 
+            $sth->bindValue(':validated_at', $validated_at);
+
+            return $sth->execute();
         } catch (PDOException $e) {
             return false;
         }
@@ -192,8 +207,8 @@ class Users{
             if ($sth === false) {
                 throw new PDOException();
             } else {
-//dis tt récupérer sous forme de classe user// recupérer avec les classes et en premier la classe user
-                return $sth->fetchAll(PDO::FETCH_CLASS,'\Users');//revoit un mapping ds ma classe users
+                //dis tt récupérer sous forme de classe user// recupérer avec les classes et en premier la classe user
+                return $sth->fetchAll(PDO::FETCH_CLASS, '\Users'); //revoit un mapping ds ma classe users
             }
         } catch (PDOException $e) {
             return [];
@@ -216,20 +231,21 @@ class Users{
         }
     }
     // Methode nouvel utilisateur ou pas
-    function isNew():bool { 
+    function isNew(): bool
+    {
         return $this->id === 0;
-
     }
-// recuperer utilisateur qui est connecté
-    public static function  current(){
-        $user= null;
-        if(!empty($_SESSION['id'])){
-            try{
-                $user= Users::get($_SESSION['id']);
-            } catch(Exception $e){
+    // recuperer utilisateur qui est connecté
+    public static function  current()
+    {
+        $user = null;
+        if (!empty($_SESSION['user'])) {
+            try {
+                $user = Users::get($_SESSION['user']->id);
+            } catch (Exception $e) {
                 session_destroy();
             }
-        } 
+        }
         return $user;
     }
 }

@@ -29,8 +29,9 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
 
     if(empty($errorsArray)){
 
-        $_SESSION['id'] = $userFromMail->getId();
-        header('location: /controllers/homeCtrl.php');
+        $_SESSION['user'] = $userFromMail;
+
+         header('location: /controllers/homeCtrl.php');
         die;
         
     }

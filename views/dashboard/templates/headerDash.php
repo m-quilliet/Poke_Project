@@ -33,8 +33,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/controllers/choiceQuizCtrl.php" class="nav-link px-0 align-middle">
+                        <a href="/controllers/choiceCatCtrl.php" class="nav-link px-0 align-middle">
                         <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">QUIZ</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="/controllers/listQuizCtrl.php" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">LISTE QUIZ</span>
                         </a>
                     </li> 
                     <li>

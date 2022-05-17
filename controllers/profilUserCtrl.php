@@ -1,6 +1,6 @@
 <?php
 require_once dirname(__FILE__) . '/../utils/init.php';
-require_once dirname(__FILE__) . '/../models/Users.php';
+require_once dirname(__FILE__) . '/../controllers/userDashCtrl.php';
 
 $profilUserStyle ='profilUserStyle.css';
 
@@ -13,6 +13,9 @@ if ($user instanceof PDOException) {
 }
 
 
-include(dirname(__FILE__).'/../views/templates/header.php');
-include(dirname(__FILE__) . '/../views/profilUser.php');
-include(dirname(__FILE__).'/../views/templates/footer.php');
+// include(dirname(__FILE__).'/../views/templates/header.php');
+
+
+include(dirname(__FILE__) .'/../views/profilUser.php');
+include(dirname(__FILE__).'/../views/userDash.php');
+

@@ -9,7 +9,7 @@ if(!isset($user))
 
 if($_SERVER["REQUEST_METHOD"] == 'POST'){
 
-    // lastname******************************************************
+    // login*
     // Nettoyage et vérification
     $login = trim(filter_input(INPUT_POST, 'login', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
     $isOk = filter_var($login, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/'.REGEX_NAME.'/')));
@@ -85,6 +85,5 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
 }
 
 include(dirname(__FILE__).'/../views/templates/header.php');
-
 include(dirname(__FILE__).'/../views/userAdd.php');
 include(dirname(__FILE__).'/../views/templates/footer.php');

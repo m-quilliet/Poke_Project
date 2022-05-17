@@ -45,13 +45,12 @@
                         <?php } else { ?>
                             <li class="nav-item">
                                 <a class="btn btn-info"href="/../../controllers/userDashCtrl.php">Contact</a>
-                            </li>
+                            </li> 
                             <li class="nav-item">
                                 <a class="btn btn-info"href="/../../controllers/userDashCtrl.php">DashUser</a>
                             </li>
 
                         <?php } ?>
-                            }
                         <li class="nav-item">
                             <a class="btn btn-info"href="/controllers/logoutCtrl.php">Déconnexion</a>
                         </li>

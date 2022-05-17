@@ -1,23 +1,12 @@
 
-<div class="container-fluid content-section" id="portfolio">
-    <div class="portfolio-container">
-        <div class="row ">
-            <div class="col-4 portfolio-card-holder">
-              <div class=" portfolio-card">
-                <a class="a" href="" target="_blank"><img src="/public/assets/img/dracHome.jpeg" alt="photo du memo pokemon" class="img-responsive portfolio-img">
-                <div class="portfolio-img-desc">Qui suis-je?                   
-                </a>
-              </div>
-            </div>
+    <form  method="POST" action="<?=htmlspecialchars($_SERVER["PHP_SELF"])?>">
+        <div class="mb-3">
+            <label for="type" class="form-label">TITRE </label>
+            <input type="text" class="form-control" id="" name="type" placeholder="saisir le titre">
         </div>
-        <div class="row">
-            <div class="col-4 portfolio-card-holder">
-                <div class=" portfolio-card">
-                    <a class="a" href="" target="_blank"><img src="/public/assets/img/groupe.jpeg" alt="photo du memo pokemon" class="img-responsive portfolio-img">
-                    <div class="portfolio-img-desc">Soleil et Lune</a>
-                </div>
-            </div>
+        <div class="col-12">
+                <button class="btn btn-primary" type="submit">Enregistrer le nom quiz</button>
         </div>
-    </div>
+    </form>
 </div>
 
