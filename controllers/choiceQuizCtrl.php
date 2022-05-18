@@ -1,6 +1,17 @@
 <?php
 require_once(dirname(__FILE__) . '/../utils/init.php');
 
+
+
+if(!isset($_GET['id']))
+{
+    $quiz= new Quiz();
+} else {
+    $quiz= Quiz::get($_GET['id']);
+}
+var_dump($quiz);
+
+
 $errorsArray=[];
 // // // si il ya une variable user c'est que mon utilisateur est connecté sinon pas connecté
 // if(!isset($quiz))
@@ -24,15 +35,20 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
     }
 
     if(empty($errorsArray) ){
-        // On crée une nouvelle instanciation et on hydrate en même temps (cf __construct)
-        $quiz = new Quiz(0,$name);
+        $quiz->setIdCategories(1);
+        $quiz->setName($name);
 
-        $quiz->getIdCategories(1);
-
-        $quiz->getIdUsers();
+        $quiz->setIdUsers(Users::current()->getId());
 
 
         $response = $quiz->save();
+        var_dump($response);
+        
+        if(is_string($response)){
+            header ('Location: /controllers/choiceQuizCtrl.php?id='.$response);
+            die;
+        }
+    
 
     }
 }

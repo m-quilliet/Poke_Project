@@ -4,7 +4,7 @@ require_once(dirname(__FILE__) . '/../utils/Database.php');
 
 class Quiz {
     private int $id=0;
-    private string $name;
+    private string $name='';
     private int $active=1;
     private int $id_categories=1;
     private int $id_users=30;
@@ -13,10 +13,8 @@ class Quiz {
 
 
 
-    public function __construct(int $id=0, string $name){
-        $this->setId($id);
-        $this->setName($name);
-    
+    public function __construct(){
+
         $this->_pdo = Database::getInstance();
     }
 
@@ -65,11 +63,15 @@ class Quiz {
     } 
 
     // // METHODE DE CRÉATION ET MODIFICATION
-        public function save(){
+    public function save(){
 
             // si quiz existe en base on le modifie
         if($this->id != 0) {
-            $sql = 'UPDATE `quiz` SET `id` = :id, `name` = :name, `active`, `id_categories` = :id_categories, `id_users`= :id_users
+            $sql = 'UPDATE `quiz` 
+            SET `id` = :id,
+            `name` = :name,
+            `id_categories` = :id_categories,
+            `id_users`= :id_users
             WHERE `id` = :id';   
         }
 
@@ -77,23 +79,26 @@ class Quiz {
         else { 
         // On créé la requête avec des marqueurs nominatif
 
-            try{
-                $sql = 'INSERT INTO `quiz` (`name`,`active`,`id_categories`,`id_users`) 
-                        VALUES (:name,1, :id_categories, :id_users)';
-                $sth = $this->_pdo->prepare($sql);
-                $sth->bindValue(':name',$this->getName(),PDO::PARAM_STR);
-                $sth->bindValue(':id_categories', $this->getIdCategories(), PDO::PARAM_INT);
-                $sth->bindValue(':id_users', $this->getIdUsers(), PDO::PARAM_INT);
-                return $sth->execute();
-    
-            }
-            catch(PDOException $e){
-                echo $e->getMessage();
-                // On retourne false si une exception est levée
-                return false;
-            }
-    }
+            
+            $sql = 'INSERT INTO `quiz` (`name`,`active`,`id_categories`,`id_users`) 
+                VALUES (:name,1, :id_categories, :id_users)';
+        
+        }
+        $sth = $this->_pdo->prepare($sql);
+        $sth->bindValue(':name',$this->getName(),PDO::PARAM_STR);
+        $sth->bindValue(':id_categories', $this->getIdCategories(), PDO::PARAM_INT);
+        $sth->bindValue(':id_users', $this->getIdUsers(), PDO::PARAM_INT);
 
+        if ($this->id != 0) {
+            $sth->bindValue(':id', $this->id, PDO::PARAM_INT);
+        }
+
+        $result= $sth->execute();
+        if($result && $this->id == 0){
+            return $this->_pdo->lastInsertId();
+        }
+        return $result;
+    }
     // public function save(): bool{
 
     //     try{
@@ -112,7 +117,7 @@ class Quiz {
     //         return false;
     //     }
 
-    }
+
     public static function get(int $id): Quiz
     {
         $sql = 'SELECT * FROM `quiz` WHERE `id` = :id';
@@ -120,6 +125,7 @@ class Quiz {
         $sth = Database::getInstance()->prepare($sql);
         $sth->bindValue(':id', $id, PDO::PARAM_INT);
         $sth->execute();
+        //recupére donnée en base de données et ensuite hydrate le model quiz
         $quiz = $sth->fetchObject('\Quiz');
         if (!$quiz) {
             throw new PDOException('Utilisateur non-trouvé');
