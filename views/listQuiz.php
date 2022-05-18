@@ -9,25 +9,27 @@
                 <table class="table table-striped" id="example">
                     <tr>
                         <th>ID</th>
-                        <th>TITRE</th>
-                        <th>SUPPRIMER</th>
-                        <th>MODIFIER</th>
-                        <th>QUESTIONS</th>
+                        <th>NOM</th>
                         <th>ACTIF</th>
+                        <th>QUESTIONS</th>
+                        <th>MODIFIER</th>
+                        <th>SUP</th>
                     </tr>
                     <?php foreach ($allquiz as $quiz) : ?>
                     <tr>
                         <td><?=$quiz->id?></td>
                         <td><?=$quiz->name?></td>
-                        <td><a href="/controllers/deleteQuizCtrl.php?id=<?= $quiz->id?>"><img src="/public/assets/img/delete-30.png"></a></td>
-                        <td><a href="/controllers/choiceQuizCtrl.php?id=<?= $quiz->id?>"><img src="/public/assets/img/editer.png"></a></td> 
-                        <td><a href="/controllers/.php?id=<?= $quiz->id?>"><img src="/public/assets/img/dossier.png"></a></td>
                         <td>
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                                <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
                             </div>
                         </td>
+                        <td><a href="/controllers/.php?id=<?= $quiz->id?>"><img src="/public/assets/img/dossier.png"></a></td>
+                        <td><a href="/controllers/choiceQuizCtrl.php?id=<?= $quiz->id?>"><img src="/public/assets/img/editer.png"></a></td>
+
+                        <td><a href="/controllers/deleteQuizCtrl.php?id=<?= $quiz->id?>"><img src="/public/assets/img/delete-30.png"></a></td>
+                        
                     </tr>
                     <?php endforeach ?>
                 </table>
@@ -37,7 +39,7 @@
                         <label for="name" class="form-label">Titre </label>
                         <input type="text" class="form-control" id="name" name="name" value="">
                     </div>
-                        <button type="submit" class="btn btn-primary"href="/controllers/listCtrl.php">Ajouter + </button>
+                        <button type="submit" class="btn btn-primary"href="/controllers/choiceQuizCtrl.php">Ajouter + </button>
                     </div>
                 </form>
             </div>
