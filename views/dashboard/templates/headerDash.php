@@ -29,27 +29,32 @@
                     </li>
                     <li>
                         <a href="/controllers/userListCtrl.php" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">UTILISATEURS</span> 
+                        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Utilisateurs</span> 
                         </a>
                     </li>
                     <li>
                         <a href="/controllers/choiceCatCtrl.php" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">QUIZ</span>
+                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Catégories</span>
                         </a>
                     </li> 
                     <li>
                         <a href="/controllers/listQuizCtrl.php" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">LISTE QUIZ</span>
+                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Liste Quiz</span>
+                        </a>
+                    </li> 
+                    <li>
+                        <a href="/controllers/addQuestCtrl.php" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Editer Questions</span>
                         </a>
                     </li> 
                     <li>
                         <a href="#" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">MEMO</span> 
+                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Memo</span> 
                     </a>
                     </li>
                     <li>
                         <a href="/controllers/logoutCtrl.php" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">SE DECONNECTER</span> 
+                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Se déconnecter</span> 
                     </a>
                     </li>
                 </ul>

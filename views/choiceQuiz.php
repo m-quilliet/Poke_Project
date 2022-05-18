@@ -6,6 +6,7 @@
         </div>
         <div class="col-12">
                 <button type="submit" class="btn btn-primary"><?=!$quiz->getId() ? "enregistrer": 'Modifier'?></button>
+                <a class="btn btn-primary" href="/controllers/listQuizCtrl.php" role="button">Retour</a>
         </div>
     </form>
 </div>
