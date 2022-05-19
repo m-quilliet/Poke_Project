@@ -151,7 +151,7 @@ class Quiz {
                 throw new PDOException();
             } else {
                 //dis tt récupérer sous forme de classe user// recupérer avec les classes et en premier la classe user
-                return $sth->fetchAll(); 
+                return $sth->fetchAll(PDO::FETCH_CLASS, '\Quiz'); 
             }
         } catch (PDOException $e) {
             return [];

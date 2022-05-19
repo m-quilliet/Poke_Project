@@ -23,7 +23,7 @@
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a href="/controllers/dashboard/headerDashCtrl.php" class="nav-link align-middle px-0">
+                        <a href="/controllers/dashboard/headerDashCtrl.php" class="nav-link align-middle px-0 text-info">
                         <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                         </a>
                     </li>
@@ -44,7 +44,12 @@
                     </li> 
                     <li>
                         <a href="/controllers/addQuestCtrl.php" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Editer Questions</span>
+                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Editer Question</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/controllers/listQuestCtrl.php" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Liste Question</span>
                         </a>
                     </li> 
                     <li>
@@ -53,7 +58,7 @@
                     </a>
                     </li>
                     <li>
-                        <a href="/controllers/logoutCtrl.php" class="nav-link px-0 align-middle">
+                        <a href="/controllers/logoutCtrl.php" class="nav-link px-0 align-middle text-white">
                         <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Se déconnecter</span> 
                     </a>
                     </li>

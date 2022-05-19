@@ -17,17 +17,17 @@
                         </tr>
                         <?php foreach ($allquiz as $quiz) : ?>
                         <tr>
-                            <td><?=$quiz->id?></td>
-                            <td><?=$quiz->name?></td>
+                            <td><?=$quiz->getId()?></td>
+                            <td><?=$quiz->getName()?></td>
                             <td>
                                 <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                                         <label class="form-check-label" for="flexSwitchCheckDefault"></label>
                                 </div>
                             </td>
-                            <td><a href="/controllers/.php?id=<?= $quiz->id?>"><img src="/public/assets/img/dossier.png"></a></td>
-                            <td><a href="/controllers/choiceQuizCtrl.php?id=<?= $quiz->id?>"><img src="/public/assets/img/editer.png"></a></td>
-                            <td><a href="/controllers/deleteQuizCtrl.php?id=<?= $quiz->id?>"><img src="/public/assets/img/delete-30.png"></a></td>
+                            <td><a href="/controllers/.php?id=<?= $quiz->getId()?>"><img src="/public/assets/img/dossier.png"></a></td>
+                            <td><a href="/controllers/choiceQuizCtrl.php?id=<?= $quiz->getId()?>"><img src="/public/assets/img/editer.png"></a></td>
+                            <td><a href="/controllers/deleteQuizCtrl.php?id=<?= $quiz->getId()?>"><img src="/public/assets/img/delete-30.png"></a></td>
                         </tr>
                         <?php endforeach ?>
                     </table>
