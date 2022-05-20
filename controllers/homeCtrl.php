@@ -5,7 +5,7 @@ require_once dirname(__FILE__) . '/../models/Users.php';
 
 
 $homePageStyle='homePageStyle.css';
-// si session definit on defi,it la variable $user
+// si session definit on definit la variable $user
 if($_SESSION['id']){
     $user= Users::get($_SESSION['id']);
 }

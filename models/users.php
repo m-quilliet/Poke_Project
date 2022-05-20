@@ -132,6 +132,8 @@ class Users
 
         return $sth->execute();
     }
+
+    
     public static function get(int $id): Users
     {
         $sql = 'SELECT * FROM `users` WHERE `id` = :id';
@@ -248,4 +250,19 @@ class Users
         }
         return $user;
     }
+          //METHODE DELETE
+        public static function delete(int $id): bool
+        {
+            $sql = "DELETE 
+                FROM `users`
+                WHERE `id`=:id;";
+    
+            try {
+                $sth = Database::getInstance()->prepare($sql);
+                $sth->bindValue(':id', $id, PDO::PARAM_INT);
+                return $sth->execute();
+            } catch (PDOException $e) {
+                return false;
+            }
+        }
 }

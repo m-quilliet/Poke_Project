@@ -4,6 +4,7 @@ require_once dirname(__FILE__) . '/../controllers/userDashCtrl.php';
 
 $profilUserStyle ='profilUserStyle.css';
 
+
 // $id = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
 
 $oneUser = Users::getByMail($user->getMail());
