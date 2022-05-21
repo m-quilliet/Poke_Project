@@ -1,20 +1,10 @@
 <?php
 
-require_once(dirname(__FILE__).'/../../utils/init.php');
+require_once(dirname(__FILE__).'/../utils/init.php');
 
 
+if (Users::delete($user->getId())){
 
-
-if (!empty($_GET)) {
-
-    $id = intval(filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT));
-
-    if (Users::delete($id)) {
-
-
-
-        header ('location: /controllers/logoutCtrl.php');
+        header ('location: /');
         die;
-
     }
-}
