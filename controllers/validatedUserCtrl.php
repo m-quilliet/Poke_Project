@@ -1,7 +1,7 @@
 <?php
 require_once dirname(__FILE__) . '/../utils/init.php';
 require_once dirname(__FILE__) . '/../helpers/jwt.php';
-require_once dirname(__FILE__) . '/../models/Users.php';
+
 
 
 

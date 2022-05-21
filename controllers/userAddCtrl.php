@@ -1,6 +1,7 @@
 <?php
 require_once(dirname(__FILE__) . '/../utils/init.php');
 require_once(dirname(__FILE__) . '/../helpers/JWT.php');
+include(dirname(__FILE__).'/../views/templates/header.php');
 // si il ya une variable user c'est que mon utilisateur est connecté sinon pas connecté
 if(!isset($user))
 {
@@ -40,23 +41,27 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
         $errorsArray['mail_error'] = 'Le champ est obligatoire';
     }
     if(!empty($_POST['password'])|| !$user->getId()){
+
     //verification password et hashage
         $password = $_POST['password'];
         $password2 = $_POST['password2'];
-        $isOk = filter_var($login, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/'.REGEXP_PASSWORD.'/')));
+        if(empty($password)){
+            $errorsArray['password_error'] = 'Le mot de passe est obligatoire';
+        }
         if($password != $password2){
-            $errorsArray['password_error'] = 'Les mots de passe ne correspondent pas';
+            $errorsArray['password_confirm_error'] = 'Les mots de passe ne correspondent pas';
         }
     }
+    $isOk = filter_var($login, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>'/'.REGEXP_PASSWORD.'/')));
+
 
     $id_rights = RIGHTS['user']; // ROLES
+    $user->setLogin($login);
+    $user->setMail($mail);
 
     if(empty($errorsArray)){       
-        $registered_at = date('Y-m-d H:i:s');
-        $user->setLogin($login);
-        $user->setMail($mail);
 
-        if(isset ($password)){
+        if(isset($password) && !empty($password) ){
             $user->setPassword($password);
         }
 
@@ -82,8 +87,10 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
         }
 
     }
+    
 }
 
-include(dirname(__FILE__).'/../views/templates/header.php');
+
+
 include(dirname(__FILE__).'/../views/userAdd.php');
 include(dirname(__FILE__).'/../views/templates/footer.php');

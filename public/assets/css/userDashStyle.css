@@ -1,22 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 
-
-header{
-  background-image: linear-gradient( 171.8deg,  rgba(5,111,146,1) 13.5%, rgba(6,57,84,1) 78.6% );
-  color:#fff;
-  height:40px;
-  padding: 10px 20px;
-}
 .menu {
     width: 250px;
     height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
+    position:sticky;
     background-image: linear-gradient( 112.1deg, rgba(32,38,57,1) 11.4%, rgba(63,76,119,1) 70.2% );
     transition: all 0.8s ease;
     transform: translateX(-250px);
-  overflow: auto;
+    overflow: auto;
 }
 input#toggle:checked ~ .menu{
   transform: translateX(0px);

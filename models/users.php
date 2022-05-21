@@ -238,12 +238,12 @@ class Users
         return $this->id === 0;
     }
     // recuperer utilisateur qui est connecté
-    public static function  current()
+    public static function  current(): ?Users 
     {
         $user = null;
-        if (!empty($_SESSION['user'])) {
+        if (!empty($_SESSION['id'])) {
             try {
-                $user = Users::get($_SESSION['user']->id);
+                $user = Users::get($_SESSION['id']);
             } catch (Exception $e) {
                 session_destroy();
             }

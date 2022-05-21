@@ -1,10 +1,7 @@
 <?php
 require_once(dirname(__FILE__) . '/../utils/init.php');
+require_once(dirname(__FILE__) . '/../helpers/adminOnly.php');
 
-
-if(empty($_SESSION) && ($_SESSION['user']->id_rigths != 1983)){
-    header('location: /');
-}
 
 $allquiz= Quiz::getAll();//$ premier nom que j'ai ds ma boucle views
 

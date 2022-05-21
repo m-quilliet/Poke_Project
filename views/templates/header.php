@@ -20,7 +20,7 @@
     <!-- -- en-téte du site-- -->
     <header>
         <!-- Barre de navigation se transformant en menu burger pour mobile -->
-            <nav class="navbar navbar-dark navbar-expand-sm bg-dark opacity-50 fixed-top">
+            <nav class="navbar navbar-dark navbar-expand-sm bg-dark opacity-50 sticky-top ">
                 <a href="/" class="navbar-brand"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>

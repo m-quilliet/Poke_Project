@@ -1,12 +1,12 @@
 <?php
 require_once(dirname(__FILE__) . '/../utils/init.php');
-require_once(dirname(__FILE__) . '/../models/Users.php');
+
 
 if($_SERVER["REQUEST_METHOD"] == 'POST'){
-    $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
+    $email = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
     $password = $_POST['password'];
 
-    $userFromMail = Users::getByMail($mail);
+    $userFromMail = Users::getByMail($email);
 
     if($userFromMail instanceOf PDOException){
         $errorsArray['Connection'] = 'Votre email n\'est pas valide.';
@@ -29,10 +29,10 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
 
     if(empty($errorsArray)){
 
-        $_SESSION['user'] = $userFromMail;
+        $_SESSION['id'] = $userFromMail->getId();
 
-         header('location: /controllers/homeCtrl.php');
-        die;
+            header('location: /controllers/homeCtrl.php');
+            die;
         
     }
 
