@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/public/assets/css/<?=$quizStyle?>">
     <link rel="stylesheet" href="/public/assets/css/<?=$userDashStyle?>">
     <link rel="stylesheet" href="/public/assets/css/<?=$profilUserStyle?>">
-   
     
     
     <title>PokéMonde</title>
@@ -20,7 +19,7 @@
     <!-- -- en-téte du site-- -->
     <header>
         <!-- Barre de navigation se transformant en menu burger pour mobile -->
-            <nav class="navbar navbar-dark navbar-expand-sm bg-dark opacity-50 sticky-top ">
+            <nav class="navbar  navbar-expand-sm  sticky-top " id="navbar">
                 <a href="/" class="navbar-brand"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -30,29 +29,32 @@
 
                         <?php if(empty($user)){?>
                         <li class="nav-item">    
-                            <a class="btn btn-info" href="/controllers/signinCtrl.php">Connexion</a>
+                            <a class="btn btn-outline-light" href="/controllers/signinCtrl.php">Connexion</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-info" href="/controllers/userAddCtrl.php">Inscription</a>
+                            <a class="btn btn-outline-light" href="/controllers/userAddCtrl.php">Inscription</a>
                         </li>
                         <?php } else {?>
                             <?php if(($user->getIdRights() == '1983')){
                                 ?>
                             <li class="nav-item">
-                                <a class="btn btn-info"href="/../../controllers/dashboard/headerDashCtrl.php">dashADMIN</a>
+                                <a class="btn btn-outline-light" href="/../../controllers/dashboard/headerDashCtrl.php">dashADMIN</a>
                             </li>
                             
                         <?php } else { ?>
                             <li class="nav-item">
-                                <a class="btn btn-info"href="/../../controllers/userDashCtrl.php">Contact</a>
+                                <a class="btn btn-outline-light" href="/../../controllers/userDashCtrl.php">Contact</a>
                             </li> 
                             <li class="nav-item">
-                                <a class="btn btn-info"href="/../../controllers/userDashCtrl.php">DashUser</a>
+                                <a class="btn btn-outline-light" href="/../../controllers/userDashCtrl.php">DashUser</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light" href="/../controllers/profilUserCtrl.php">Profil</a>
                             </li>
 
                         <?php } ?>
                         <li class="nav-item">
-                            <a class="btn btn-info"href="/controllers/logoutCtrl.php">Déconnexion</a>
+                            <a class="btn btn-outline-light" href="/controllers/logoutCtrl.php">Déconnexion</a>
                         </li>
                         <?php } ?>
                     </ul>

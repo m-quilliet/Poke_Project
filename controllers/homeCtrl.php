@@ -5,6 +5,7 @@ require_once dirname(__FILE__) . '/../models/Users.php';
 
 
 $homePageStyle='homePageStyle.css';
+// si session definit on definit la variable $user
 
 
 include(dirname(__FILE__).'/../views/templates/header.php');

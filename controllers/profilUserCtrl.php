@@ -1,8 +1,10 @@
 <?php
 require_once dirname(__FILE__) . '/../utils/init.php';
-require_once dirname(__FILE__) . '/../controllers/userDashCtrl.php';
 
-$profilUserStyle ='profilUserStyle.css';
+
+
+$profilUserStyle = 'profilUserStyle.css';
+
 
 
 $oneUser = Users::getByMail($user->getMail());
@@ -11,7 +13,5 @@ if ($user instanceof PDOException) {
     $error = $user->getMessage();
 }
 
-
-include(dirname(__FILE__) .'/../views/profilUser.php');
-include(dirname(__FILE__).'/../views/userDash.php');
-
+include(dirname(__FILE__) . '/../views/templates/header.php');
+include(dirname(__FILE__) . '/../views/profilUser.php');

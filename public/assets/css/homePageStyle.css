@@ -1,51 +1,57 @@
 
-
-
-#home .btn {
-	color: #fff;
-	font-size: 19px;
-	font-weight: 700;
-	text-transform: uppercase;
-	background: #6bb3e2 !important;
-	padding: 1rem;
-	border-radius: 3px;
-	margin-top: 2rem;
-	display: inline-block;
+body{
+	font-family:Arial, Helvetica, sans-serif;
+	color:#141B1B;
+	line-height:1.6;
 }
-#home .btn:hover {
-	background: rgba(128, 129, 125, 0.9) !important;
+#navbar{
+	background-color: #6DA6AC !important;
 }
 
-.pokemon-ball {
-border: 3px solid rgb(219, 213, 213)  ;
-border-radius: 50%;
-margin-top:5rem;
+#btnHome{
+	background-color:#6DA6AC;
+	font-size: large;
 }
 
-
-#home { 
-background: #539fcb;
-width: 100%;
-min-height: 100vh;
+#btnHome:hover{
+	background-color:#fff;
+	color:#6DA6AC;
 }
 
-
-#home div { 
-display: inline-block;
-vertical-align: top;
-width: 48%;
+#showcase{
+	background-image: url("/public/assets/img/threeBall.jpeg");
+	height:93vh;
+	background-position: center;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align:center;
+	padding: 0 20px;
 }
 
-.aboutImg {
-text-align: center;
+#showcase h1{
+	font-size:5rem;
+	
 }
 
-
-.headerOne { 
-font-family: 'Oswald', sans-serif;
-font-size: 36px;
-text-transform: uppercase;
-color: #9E1908;
+#showcase p{
+	font-size:2rem;
+	color: #FFFFFF;
 }
 
+#showcase .button{
+	font-size: large;
+	color:rgb(252, 252, 252);
+	padding:10px 20px;
+	border-radius:10px;
+	margin-top:20px;
+	border-color: #6DA6AC;
+}
+
+#showcase .button:hover{
+	background-color:#6DA6AC;
+	color:#fff;
+}
 

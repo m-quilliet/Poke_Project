@@ -1,16 +1,16 @@
-<?php if (!empty($user)) { ?>
-    Bonjour <?= $user->getLogin(); ?>
-<?php } ?>
+ <!-- if (!empty($user)) { ?>
+    <!-- Bonjour <?= $user->getLogin(); ?> -->
 
-    <div id="home">
-  <div class="aboutImg">
-    <img src="http://www.pngmart.com/files/2/Pokeball-PNG-Image.png" class="pokemon-ball" width="300">
-  </div>
-  <div>
-    <h1 class="headerOne">Rejoins nous</h1>
-  </div>
-</div> 
 
+
+
+<header id="showcase">
+  <h1> Bienvenue</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio aperiam,
+    exercitationem id nesciunt,
+  </p>
+  <a class="btn btn-outline-light" id="btnHome" href="/controllers/userAddCtrl.php">Inscription</a>
+</header>
 
 
 
