@@ -27,7 +27,6 @@
                 </button>
                 <div id="navbarCollapse" class="collapse navbar-collapse">
                     <ul class="navbar-nav">
-
                         <?php if(empty($user)){?>
                         <li class="nav-item">    
                             <a class="btn btn-outline-light" href="/controllers/signinCtrl.php">Connexion</a>
@@ -35,35 +34,21 @@
                         <li class="nav-item">
                             <a class="btn btn-outline-light" href="/controllers/userAddCtrl.php">Inscription</a>
                         </li>
-                        <li class="nav-item">
-                                <a class="btn btn-outline-light" href="/../../controllers/userDashCtrl.php">Contact</a>
-                        </li> 
                         <?php } else {?>
-                            <?php if(($user->getIdRights() == '1983')){
-                                ?>
-                            <li class="nav-item">
-                                <a class="btn btn-outline-light" href="/../../controllers/dashboard/headerDashCtrl.php">dashADMIN</a>
-                            </li>
-                            
-                        <?php } else { ?>
+                            <?php if(($user->getIdRights() == '1983')){ ?>
+                                <li class="nav-item">
+                                    <a class="btn btn-outline-light" href="/../../controllers/dashboard/headerDashCtrl.php">dashADMIN</a>
+                                </li>
+                                    
+                                <?php } else { ?>
+                                <li class="nav-item">
+                                    <a class="btn btn-outline-light" href="/controllers/profilUserCtrl.php">Profil</a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a class="btn btn-outline-light" href="/../../controllers/userDashCtrl.php">DashUser</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="btn btn-outline-light" href="/../controllers/profilUserCtrl.php">Profil</a>
-                            </li>
-
-                        <?php } ?>
-                        <li class="nav-item">
-                                <a class="btn btn-outline-light" href="/../../controllers/homeCtrl.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-outline-light" href="/controllers/logoutCtrl.php">Déconnexion</a>
-                        </li>
-                        <li class="nav-item">
-                                <a class="btn btn-outline-light" href="/../../controllers/userDashCtrl.php">Contact</a>
-                        </li>
+                                <?php } ?>
+                                <li class="nav-item">
+                                    <a class="btn btn-outline-light" href="/controllers/logoutCtrl.php">Déconnexion</a>
+                                </li>
                         <?php } ?>
                     </ul>
                 </div>
