@@ -1,11 +1,7 @@
 <?php
 require_once dirname(__FILE__) . '/../utils/init.php';
 
-
-
 $profilUserStyle = 'profilUserStyle.css';
-
-
 
 $oneUser = Users::getByMail($user->getMail());
 

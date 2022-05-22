@@ -5,7 +5,7 @@
 
 
 <header id="showcase">
-  <h1> Bienvenue</h1>
+  <h1> Bonjour <?= $user->getLogin(); ?> </h1>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio aperiam,
     exercitationem id nesciunt,
   </p>

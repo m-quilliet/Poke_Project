@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/public/assets/css/<?=$quizStyle?>">
     <link rel="stylesheet" href="/public/assets/css/<?=$userDashStyle?>">
     <link rel="stylesheet" href="/public/assets/css/<?=$profilUserStyle?>">
+    <link rel="stylesheet" href="/public/assets/css/<?=$userAddStyle?>">
     
     
     <title>PokéMonde</title>
@@ -34,6 +35,9 @@
                         <li class="nav-item">
                             <a class="btn btn-outline-light" href="/controllers/userAddCtrl.php">Inscription</a>
                         </li>
+                        <li class="nav-item">
+                                <a class="btn btn-outline-light" href="/../../controllers/userDashCtrl.php">Contact</a>
+                        </li> 
                         <?php } else {?>
                             <?php if(($user->getIdRights() == '1983')){
                                 ?>
@@ -42,9 +46,7 @@
                             </li>
                             
                         <?php } else { ?>
-                            <li class="nav-item">
-                                <a class="btn btn-outline-light" href="/../../controllers/userDashCtrl.php">Contact</a>
-                            </li> 
+
                             <li class="nav-item">
                                 <a class="btn btn-outline-light" href="/../../controllers/userDashCtrl.php">DashUser</a>
                             </li>
@@ -54,7 +56,13 @@
 
                         <?php } ?>
                         <li class="nav-item">
+                                <a class="btn btn-outline-light" href="/../../controllers/homeCtrl.php">Home</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="btn btn-outline-light" href="/controllers/logoutCtrl.php">Déconnexion</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="btn btn-outline-light" href="/../../controllers/userDashCtrl.php">Contact</a>
                         </li>
                         <?php } ?>
                     </ul>

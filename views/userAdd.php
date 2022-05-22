@@ -1,12 +1,10 @@
-<main class="d-flex justify-content-center align-items-center vh-100">
+<main class="d-flex justify-content-center align-items-center vh-100" >
     <div class="container">
-        <div class="row">
-            <h1 class="col-12 text-center"><?=!$user->getId() ? 'inscription': 'modification'?></h1>
-        </div>
-        <div class="row justify-content-center">
-            <?php 
-                require_once(dirname(__FILE__) .'/fragments/userUpsert.php');
-            ?>
+        <div class="row justify-content-center"  >
+            <h1 class="col-12 text-center mt-5" ><?=!$user->getId() ? 'Inscription': 'Modification'?></h1>
+                <?php 
+                    require_once(dirname(__FILE__) .'/fragments/userUpsert.php');
+                ?>
         </div>
     </div>
 </main>

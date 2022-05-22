@@ -1,0 +1,16 @@
+#add {
+    background-image: url('/public/assets/img/ballturquoise.jpeg');
+    background-size:cover;
+    background-position: center;
+    border-style:groove;
+    border-color:white;
+    filter: grayscale(25%);
+}
+input {
+    background-color: rgba(255, 255, 255, 0.842) !important;
+    color:darkcyan !important;
+    font-size:20px !important;
+    border-width: 1px !important;
+    border-color: white !important;
+    z-index:1 !important;
+}

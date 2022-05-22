@@ -1,7 +1,11 @@
 <?php
 require_once(dirname(__FILE__) . '/../utils/init.php');
 require_once(dirname(__FILE__) . '/../helpers/JWT.php');
-include(dirname(__FILE__).'/../views/templates/header.php');
+
+
+$userAddStyle='userAddStyle.css';
+
+
 // si il ya une variable user c'est que mon utilisateur est connecté sinon pas connecté
 if(!isset($user))
 {
@@ -91,6 +95,6 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
 }
 
 
-
+include(dirname(__FILE__).'/../views/templates/header.php');
 include(dirname(__FILE__).'/../views/userAdd.php');
 include(dirname(__FILE__).'/../views/templates/footer.php');
