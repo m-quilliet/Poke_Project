@@ -1,7 +1,9 @@
 <?php
 require_once(dirname(__FILE__) . '/../utils/init.php');
 
+
 $userAddStyle='userAddStyle.css';
+$homePageStyle = 'homePageStyle.css';
 
 if($_SERVER["REQUEST_METHOD"] == 'POST'){
     $email = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));

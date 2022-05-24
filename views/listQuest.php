@@ -1,12 +1,12 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="panel panel-success">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="panel panel-white">
                 <div class="panel-heading">
                     <i class="fa fa-table fa-fw"></i> <h1>Liste des Questions</h1>
                 </div>
-                <div class="table-responsive bg-info">
-                    <table class="table table-striped " id="example">
+                <div class="table-responsive ">
+                    <table class="table table-striped">
                         <tr>
                             <th>ID</th>
                             <th>LIBELLE</th>
@@ -27,7 +27,7 @@
                             <td><?=$question->getResponse()?></td>
                             <td>
                                 <a href="/controllers/addQuestCtrl.php?id=<?= $question->getId()?>">
-                                    <img src="/public/assets/img/editer.png">
+                                    <img src="/public/assets/img/modifier.png">
                                 </a>
                             </td>
                             <td>
@@ -39,7 +39,7 @@
                         <?php endforeach ?>
                     </table>
                 </div>
-                    <a class="btn btn-primary my-4 " href="/controllers/addQuestCtrl.php" role="button">Ajouter +</a>
+                    <a class="btn my-4 " href="/controllers/addQuestCtrl.php" role="button">Ajouter +</a>
                 </div>
             </div>
         </div>

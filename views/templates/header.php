@@ -34,21 +34,27 @@
                         <li class="nav-item">
                             <a class="btn btn-outline-light" href="/controllers/userAddCtrl.php">Inscription</a>
                         </li>
-                        <?php } else {?>
-                            <?php if(($user->getIdRights() == '1983')){ ?>
-                                <li class="nav-item">
-                                    <a class="btn btn-outline-light" href="/../../controllers/dashboard/headerDashCtrl.php">dashADMIN</a>
-                                </li>
-                                    
-                                <?php } else { ?>
-                                <li class="nav-item">
-                                    <a class="btn btn-outline-light" href="/controllers/profilUserCtrl.php">Profil</a>
-                                </li>
+                        <?php } else { ?>
+                        <?php if(($user->getIdRights() == '1983')){ ?>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light" href="/../../controllers/dashboard/headerDashCtrl.php">dashADMIN</a>
+                            </li>
+                                
+                            <?php } else { ?>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light" href="/controllers/profilUserCtrl.php">Profil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light" href="https://maibelline.github.io/Memo/">Memo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light" href="/controllers/quizCtrl.php">Quiz</a>
+                            </li>
 
-                                <?php } ?>
-                                <li class="nav-item">
-                                    <a class="btn btn-outline-light" href="/controllers/logoutCtrl.php">Déconnexion</a>
-                                </li>
+                            <?php } ?>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light" href="/controllers/logoutCtrl.php">Déconnexion</a>
+                            </li>
                         <?php } ?>
                     </ul>
                 </div>

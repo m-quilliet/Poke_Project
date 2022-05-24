@@ -2,6 +2,7 @@
 require_once dirname(__FILE__) . '/../utils/init.php';
 require_once(dirname(__FILE__) . '/../helpers/adminOnly.php');
 
+$headerDashStyle = 'headerDashStyle.css';
 
 $choiceQuizStyle='choiceQuizStyle.css';
 

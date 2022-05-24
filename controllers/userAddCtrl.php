@@ -4,6 +4,7 @@ require_once(dirname(__FILE__) . '/../helpers/JWT.php');
 
 
 $userAddStyle='userAddStyle.css';
+$homePageStyle = 'homePageStyle.css';
 
 
 // si il ya une variable user c'est que mon utilisateur est connecté sinon pas connecté

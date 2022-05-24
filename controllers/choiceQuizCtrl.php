@@ -1,7 +1,7 @@
 <?php
 require_once(dirname(__FILE__) . '/../utils/init.php');
 
-
+$headerDashStyle = 'headerDashStyle.css';
 
 if(!isset($_GET['id']))
 {

@@ -2,6 +2,7 @@
 require_once dirname(__FILE__) . '/../utils/init.php';
 
 $profilUserStyle = 'profilUserStyle.css';
+$homePageStyle = 'homePageStyle.css';
 
 $oneUser = Users::getByMail($user->getMail());
 

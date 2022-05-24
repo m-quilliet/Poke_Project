@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:500,600|Ubuntu:400,700');
+
+#bleu {
+  background-color:#6DA6AC !important;
+  color:beige;
+}
+.nav-link{
+  color:rgb(253, 252, 251);
+  font-weight: 500;
+}
+.nav-link:hover{
+  color:#E09870;
+}
+th{
+  background-color:#6DA6AC !important;
+  color:rgb(249, 249, 249);
+}
+h1{
+  color:#6DA6AC;
+}
+.table{
+  color:rgb(7, 89, 97);
+}
+
+a.btn{
+  background-color: #6DA6AC;
+  border-color:#6DA6AC;
+  color:white;
+}
+button.btn{
+  background-color: #6DA6AC;
+  color:white;
+}
+
+a.btn:hover{
+  background-color: #fff;
+  color:#6DA6AC;
+}
+button.btn:hover{
+  background-color: #fff;
+  color:#6DA6AC;
+}
+.btn{
+  border-color:#6DA6AC;
+}
+

@@ -5,7 +5,7 @@
                 <div class="panel-heading">
                     <i class="fa fa-table fa-fw"></i> <h1>Liste des Quiz</h1>
                 </div>
-                <div class="table-responsive bg-info">
+                <div class="table-responsive ">
                     <table class="table table-striped " id="example">
                         <tr>
                             <th>ID</th>
@@ -25,14 +25,14 @@
                                         <label class="form-check-label" for="flexSwitchCheckDefault"></label>
                                 </div>
                             </td>
-                            <td><a href="/controllers/.php?id=<?= $quiz->getId()?>"><img src="/public/assets/img/dossier.png"></a></td>
-                            <td><a href="/controllers/choiceQuizCtrl.php?id=<?= $quiz->getId()?>"><img src="/public/assets/img/editer.png"></a></td>
+                            <td><a href="/controllers/.php?id=<?= $quiz->getId()?>"><img src="/public/assets/img/ajouter.png"></a></td>
+                            <td><a href="/controllers/choiceQuizCtrl.php?id=<?= $quiz->getId()?>"><img src="/public/assets/img/modifier.png"></a></td>
                             <td><a href="/controllers/deleteQuizCtrl.php?id=<?= $quiz->getId()?>"><img src="/public/assets/img/delete-30.png"></a></td>
                         </tr>
                         <?php endforeach ?>
                     </table>
                 </div>
-                    <a class="btn btn-primary my-4" href="/controllers/choiceQuizCtrl.php" role="button">Ajouter +</a>
+                    <a class="btn my-4" href="/controllers/choiceQuizCtrl.php" role="button">Ajouter +</a>
                 </div>
             </div>
         </div>
