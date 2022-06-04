@@ -1,5 +1,4 @@
 <?php
-
 require_once dirname(__FILE__) . '/../models/Users.php';
 require_once dirname(__FILE__) . '/../models/Quiz.php';
 require_once(dirname(__FILE__) . '/../models/Questions.php');

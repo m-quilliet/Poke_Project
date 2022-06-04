@@ -28,5 +28,5 @@
         <input type="text" class="form-control" id="response" name="response" value="<?= $question->getResponse() ?>">
     </div>
     <button type="submit" class="btn" href="/controllers/addQuestCtrl.php"><?= !$question->getId() ? "Editer" : 'Modification' ?></button>
-    <a class="btn" my-2 mx-1" href="/controllers/listQuestCtrl.php" role="button">Retour</a>
+
 </form>

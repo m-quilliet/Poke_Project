@@ -101,8 +101,7 @@ class Questions
 
     public function save()
     {
-
-        // si quiz existe en base on le modifie
+        // si la question existe en base on la modifie
         if ($this->id != 0) {
             $sql = 'UPDATE `questions` 
             SET `libelle` = :libelle,
@@ -113,14 +112,9 @@ class Questions
             `id_quiz`= :id_quiz
             WHERE `id` = :id';
         }
-
-
-
-        // si il n'existe pas on l'insert en base
+        // si elle n'existe pas on l'insert en base
         else {
             // On créé la requête avec des marqueurs nominatif
-
-
             $sql = 'INSERT INTO `questions` (`libelle`,`response_a`,`response_b`,`response_c`,`response`,`id_quiz`) 
                 VALUES (:libelle,:response_a,:response_b,:response_c, :response, :id_quiz)';
         }
@@ -131,7 +125,6 @@ class Questions
         $sth->bindValue(':response_c', $this->getResponseC(), PDO::PARAM_STR);
         $sth->bindValue(':response', $this->getResponse(), PDO::PARAM_STR);
         $sth->bindValue(':id_quiz', $this->getIdQuiz(), PDO::PARAM_INT);
-
 
         if ($this->id != 0) {
             $sth->bindValue(':id', $this->id, PDO::PARAM_INT);
@@ -176,6 +169,25 @@ class Questions
             $sth = $pdo->query($sql);
 
             if ($sth === false) {
+                throw new PDOException();
+            } else {
+                //dis tt récupérer sous forme de classe user// recupérer avec les classes et en premier la classe user
+                return $sth->fetchAll(PDO::FETCH_CLASS, '\Questions');
+            }
+        } catch (PDOException $e) {
+            return [];
+        }
+    }
+    public static function getAllByQuizId(int $quizId): array 
+    {
+        try {
+            // On créé la requête
+            $sql = 'SELECT * FROM `questions` WHERE `id_quiz`= :quizId';
+
+            $sth = Database::getInstance()->prepare($sql);
+            $sth->bindValue(':quizId', $quizId, PDO::PARAM_INT);
+            // On exécute la requête
+            if ($sth->execute() === false) {
                 throw new PDOException();
             } else {
                 //dis tt récupérer sous forme de classe user// recupérer avec les classes et en premier la classe user

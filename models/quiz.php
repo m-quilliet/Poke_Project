@@ -61,6 +61,9 @@ class Quiz {
     public function getIdUsers(){ 
     return $this->id_users ;
     } 
+    public function getQuestions(){
+        return Questions::getAllByQuizId($this->id);
+    }
 
     // // METHODE DE CRÉATION ET MODIFICATION
     public function save(){

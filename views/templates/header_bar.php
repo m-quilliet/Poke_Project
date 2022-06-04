@@ -1,0 +1,45 @@
+<header>
+    <!-- Barre de navigation se transformant en menu burger pour mobile -->
+    <nav class="navbar  navbar-expand-sm  sticky-top " id="navbar">
+        <a href="/" class="navbar-brand"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="btn btn-outline-light" href="/">Home</a>
+                </li>
+                <?php if (empty($user)) { ?>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light" href="/controllers/signinCtrl.php">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light" href="/controllers/userAddCtrl.php">Inscription</a>
+                    </li>
+                <?php } else { ?>
+                    <?php if (($user->getIdRights() == '1983')) { ?>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-light" href="/../../controllers/dashboard/headerDashCtrl.php">dashADMIN</a>
+                        </li>
+
+                    <?php } else { ?>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-light" href="/controllers/profilUserCtrl.php">Profil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-light" href="https://maibelline.github.io/Memo/">Memo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-light" href="/controllers/userQuizListCtrl.php">Quiz</a>
+                        </li>
+
+                    <?php } ?>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light" href="/controllers/logoutCtrl.php">Déconnexion</a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+    </nav>
+</header>

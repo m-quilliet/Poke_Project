@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col">
+        <div class="col-8">
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <i class="fa fa-table fa-fw"></i> <h1>Liste des Quiz</h1>

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/../../public/assets/css/<?=$choiceQuizStyle?>">
     <link rel="stylesheet" href="/../../public/assets/css/<?=$profilUserStyle?>">
     <link rel="stylesheet" href="/../../public/assets/css/<?=$quizStyle?>">
-    <title>PokéMonde</title>
+    <title>Poké'MOM</title>
 </head>
 <body>
     <!-- en-téte du site -->
