@@ -28,7 +28,7 @@
                             <a class=" text-white m-2 fs-5 from-right  " href="/controllers/profilUserCtrl.php">Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a class=" text-white m-2 fs-5 from-right  " href="https://maibelline.github.io/Memo/">Memo</a>
+                            <a class=" text-white m-2 fs-5 from-right  " href="/controllers/memoryCtrl.php">Memo</a>
                         </li>
                         <li class="nav-item">
                             <a class=" text-white m-2 fs-5 from-right " href="/controllers/userQuizListCtrl.php">Quiz</a>

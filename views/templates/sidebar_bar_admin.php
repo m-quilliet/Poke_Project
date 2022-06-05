@@ -19,18 +19,8 @@
             </a>
         </li>
         <li>
-            <a href="/controllers/memoryCtrl.php" class="nav-link px-0 align-middle">
-                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">MEMO</span>
-            </a>
-        </li>
-        <li>
             <a href="/controllers/quizCtrl.php" class="nav-link px-0 align-middle">
                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">QUIZ</span>
-            </a>
-        </li>
-        <li>
-            <a href="/controllers/logoutCtrl.php" class="nav-link px-0 align-middle text-white">
-                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Se déconnecter</span>
             </a>
         </li>
     </ul>
