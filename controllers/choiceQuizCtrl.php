@@ -2,6 +2,7 @@
 require_once(dirname(__FILE__) . '/../utils/init.php');
 
 $headerDashStyle = 'headerDashStyle.css';
+$currentPage= dirname(__FILE__).'/../views/choiceQuiz.php';
 
 if(!isset($_GET['id']))
 {
@@ -42,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
         }
     }
 }
-include(dirname(__FILE__).'/../views/dashboard/templates/headerDash.php');
-include(dirname(__FILE__).'/../views/choiceQuiz.php');
+include(dirname(__FILE__).'/../views/templates/layout_admin.php');
+
 
 

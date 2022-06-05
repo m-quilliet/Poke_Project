@@ -8,6 +8,8 @@ $headerDashStyle = 'headerDashStyle.css';
 //si aucun id n'est récupéré dans l'url, création d'une nouvelle question
 if (!isset($_GET['id'])) {
     $question = new Questions();
+    $id_quiz =  filter_input(INPUT_GET, 'id_quiz', FILTER_SANITIZE_NUMBER_INT);
+    $question->setIdQuiz($id_quiz);
 } else {
     //sinon modification de la question 
     $question = Questions::get($_GET['id']);
@@ -17,8 +19,6 @@ $allQuiz = Quiz::getAll();
 
 //nettoyage et vérification des données
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
-    $id_quiz =  filter_input(INPUT_POST, 'id_quiz', FILTER_SANITIZE_NUMBER_INT);
-
     // Nettoyage du champ libellé
     $libelle = trim(filter_input(INPUT_POST, 'libelle', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
     $isOk = filter_var($libelle, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_TEXTAREA . '/')));
@@ -82,7 +82,6 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         $question->setResponseB($responseB);
         $question->setResponseC($responseC);
         $question->setResponse($response);
-        $question->setIdQuiz($id_quiz);
 
         //
         $result = $question->save();

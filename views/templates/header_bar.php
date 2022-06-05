@@ -1,4 +1,4 @@
-<header>
+<header class="header_user">
     <!-- Barre de navigation se transformant en menu burger pour mobile -->
     <nav class="navbar  navbar-expand-sm  sticky-top " id="navbar">
         <a href="/" class="navbar-brand"></a>
@@ -8,35 +8,35 @@
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="btn btn-outline-light" href="/">Home</a>
+                    <a class=" text-white m-2 fs-5 from-right " href="/">Home</a>
                 </li>
                 <?php if (empty($user)) { ?>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light" href="/controllers/signinCtrl.php">Connexion</a>
+                        <a class=" text-white m-2 fs-5 from-right " href="/controllers/signinCtrl.php">Connexion</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light" href="/controllers/userAddCtrl.php">Inscription</a>
+                        <a class=" text-white m-2 fs-5 from-right " href="/controllers/userAddCtrl.php">Inscription</a>
                     </li>
                 <?php } else { ?>
                     <?php if (($user->getIdRights() == '1983')) { ?>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" href="/../../controllers/dashboard/headerDashCtrl.php">dashADMIN</a>
+                            <a class=" text-white m-2 fs-5 from-right " href="/../../controllers/dashboard/headerDashCtrl.php">dashADMIN</a>
                         </li>
 
                     <?php } else { ?>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" href="/controllers/profilUserCtrl.php">Profil</a>
+                            <a class=" text-white m-2 fs-5 from-right  " href="/controllers/profilUserCtrl.php">Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" href="https://maibelline.github.io/Memo/">Memo</a>
+                            <a class=" text-white m-2 fs-5 from-right  " href="https://maibelline.github.io/Memo/">Memo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" href="/controllers/userQuizListCtrl.php">Quiz</a>
+                            <a class=" text-white m-2 fs-5 from-right " href="/controllers/userQuizListCtrl.php">Quiz</a>
                         </li>
 
                     <?php } ?>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light" href="/controllers/logoutCtrl.php">Déconnexion</a>
+                        <a class=" text-white m-2 fs-5 from-right " href="/controllers/logoutCtrl.php">Déconnexion</a>
                     </li>
                 <?php } ?>
             </ul>
