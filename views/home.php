@@ -1,12 +1,9 @@
-
-<header id="showcase">
-  <h1> Bonjour  </h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio aperiam,
-    exercitationem id nesciunt,
-  </p>
-  <a class="btn btn-outline-light" id="btnHome" href="/../controllers/userAddCtrl.php">Inscription</a>
-</header>
-
-
-
-
+  <div class="top">
+    <div>
+    </div>
+    <div class="center">
+      <p><span id="bigText">Poké'MOM</span><br></p>
+      <p>Revéle le défi de nos Quiz et Mémo !</p>
+      <a href="/../controllers/userAddCtrl.php" class="btn btn-outline-light b1">Inscription</a>
+    </div>
+  </div>
