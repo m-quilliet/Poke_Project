@@ -2,12 +2,12 @@
     <main>
         <form method="POST">
             <div class="text-container">
-                <h3>Quiz</h3>
+                <h3 >Quiz</h3>
             </div>
             <?php if (isset($question)) : ?>
                 <div class="text-container">
-                    <p>QUESTION <?=$_GET['idx_question'] + 1?> / <?= count($questions) ?></p>
-                    <p><?= $question->getLibelle() ?></p>
+                    <p id="nb">QUESTION <?=$_GET['idx_question'] + 1?> / <?= count($questions) ?></p>
+                    <p id="quest"><?= $question->getLibelle() ?></p>
                 </div>
                 <div class="quiz-options">
                     <input type="radio" class="input-radio one-a" id="responseA" name="response" value="<?= $question->getResponseA() ?>" required>
@@ -25,7 +25,8 @@
 
                     </label>
                 </div>
-                <input type="submit" value="Valider" />
+                <input class="btn-1" type="submit" value="Valider" />
+                <!-- <button class="custom-btn btn-12"><span>Click!</span><span>Read More</span></button> -->
             <?php endif ?>
         </form>
         score: <?=$_SESSION['score']?>

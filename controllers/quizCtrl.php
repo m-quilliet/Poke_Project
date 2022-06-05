@@ -26,7 +26,7 @@ if (count($questions)) {
     if (!isset($_GET['idx_question'])) {
         redirectTo(htmlspecialchars($_SERVER["REQUEST_URI"]) . '&idx_question=0');
     }
-    if((int) $_GET['idx_question'] == 0){
+    if ((int) $_GET['idx_question'] == 0) {
         $_SESSION['score'] = 0;
     }
 
@@ -35,10 +35,10 @@ if (count($questions)) {
     if (count($_POST)) {
         // @TODO: traiter le resultat
 
-            //si variable post response = response de ma question
-            if($_POST['response'] == $question->getResponse()){
-                $_SESSION['score']++;
-            }
+        //si variable post response = response de ma question
+        if ($_POST['response'] == $question->getResponse()) {
+            $_SESSION['score']++;
+        }
 
         // Si la question n'est pas la derniére
         if ((int) $_GET['idx_question'] < count($questions) - 1) {

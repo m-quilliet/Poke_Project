@@ -21,23 +21,32 @@ a {
 }
 
 section {
-    background-image: url('/public/assets/img/Q4.jpeg');
+    background-image: url('/public/assets/img/Q2.jpeg');
     background-size: cover;
     background-position: center;
     overflow-y: hidden;
+    height: auto;
 }
 
 main {
-    background: rgba(217, 214, 228, 0.12);
     border-radius: 10px;
-    padding: 5px 20px 50px;
     width: 95%;
     max-width: 500px;
     margin: 0 auto 214px;
 }
+#nb{
+    font-size: medium;
+    padding: auto;
+}
+#quest{
+    font-size:2.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-bottom: 1rem;
+}
 
 .text-container {
     text-align: center;
+    margin-bottom: 1rem;
 }
 
 .quiz-options {
@@ -55,12 +64,13 @@ label {
     display: flex;
     align-items: center;
     border-radius: 5px;
-    background: rgba(20, 230, 249, 0.72);
+    background: rgba(221, 241, 242, 0.544);
     margin-bottom: 15px;
     padding: 6px 0;
     position: relative;
     width: 100%;
     color: #000;
+    font-size: larger;
 }
 
 
@@ -85,23 +95,23 @@ label .alphabet {
 
 @keyframes flash {
     0% {
-        background-color: #b8e0f1;
+        background-color: #F7D248;
     }
 
     49% {
-        background-color: #26dbeb;
+        background-color: #5A959F;
     }
 
     50% {
-        background-color: #53f88f;
+        background-color: #E88D3A;
     }
 
     99% {
-        background-color: #7E94DF;
+        background-color: #E88D3A;
     }
 
     100% {
-        background-color: #f1cd3c;
+        background-color: #5A959F;
     }
 }
 
@@ -182,6 +192,8 @@ h1::before {
         background-position: 100%;
     }
 }
+
+
 
 /* MEDIA QUERY */
 
