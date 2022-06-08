@@ -1,8 +1,8 @@
 <div class="panel panel-success">
     <div class="panel-heading">
-        <h1>Liste des Quiz</h1>
+        <h1 class="fs-1 mt-2">Liste des Quiz</h1>
     </div>
-    <div class="table-responsive ">
+    <div class="table-responsive mt-3 ">
         <table class="table table-striped " id="example">
             <tr>
                 <th>ID</th>
@@ -12,8 +12,8 @@
                 <th>SUP</th>
             </tr>
             <?php foreach ($allquiz as $quiz) : ?>
-                <tr>
-                    <td><?= $quiz->getId() ?></td>
+                <tr class="text-white fs-4">
+                    <td ><?= $quiz->getId() ?></td>
                     <td><?= $quiz->getName() ?></td>
                     <td>
                         <a target="_blank" href="/controllers/quizCtrl.php?id=<?= $quiz->getId() ?>">

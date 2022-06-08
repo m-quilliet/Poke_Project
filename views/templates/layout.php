@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/public/assets/css/userDashStyle.css">
     <link rel="stylesheet" href="/public/assets/css/profilUserStyle.css">
     <link rel="stylesheet" href="/public/assets/css/userAddStyle.css">
+    <link rel="stylesheet" href="/public/assets/css/choiceQuizStyle.css">
 
 
     <title>Poké'MOM</title>
@@ -21,7 +22,7 @@
 <body>
     <?php
     require_once dirname(__FILE__) . '/header_bar.php';
-    include($currentPage)
+    include($currentPage);
     ?>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

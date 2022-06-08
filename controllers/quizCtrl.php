@@ -7,7 +7,7 @@ function redirectTo(string $url)
     die;
 }
 
-// une garde début script si rempli pas les conditions, je le renvoie à la page indiquée
+// c'est une garde au début script si rempli pas les conditions, je le renvoie à la page indiquée
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     header('Location: /controllers/userQuizListCtrl.php');
     die;
@@ -54,8 +54,8 @@ if (count($questions)) {
         // Sinon (si la question est la derniére)
         else {
             // On redirige vers le résultat
-            // @TODO: Mettre l'url de la page de résultat
-            redirectTo('/controllers/userQuizListCtrl.php');
+            // l'url de la page de résultat
+            redirectTo('/controllers/quizResultCtrl.php?id=' . $quiz->getId());
         }
     }
 }

@@ -2,6 +2,7 @@
 require_once dirname(__FILE__) . '/../models/Users.php';
 require_once dirname(__FILE__) . '/../models/Quiz.php';
 require_once(dirname(__FILE__) . '/../models/Questions.php');
+require_once dirname(__FILE__) . '/../models/Scores.php';
 
 // $homePageStyle = 'homePageStyle.css';
 
@@ -16,7 +17,3 @@ $user = Users::current();
 require_once(dirname(__FILE__) . '/../config/config.php');
 require_once(dirname(__FILE__) . '/../config/regex.php');
 require_once(dirname(__FILE__) . '/../utils/Database.php');
-
-
-
-

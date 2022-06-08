@@ -43,4 +43,12 @@ button.btn:hover{
 .btn{
   border-color:#6DA6AC;
 }
+.mailto{
+  color:#6DA6AC !important;
+  text-decoration: none;
+}
+.mailto:hover{
+  color:#E09870 !important;
+  text-decoration: none;
+}
 

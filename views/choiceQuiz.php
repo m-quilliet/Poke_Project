@@ -4,7 +4,7 @@
             <h1>Information du Quiz</h1>
         </div>
         <div class="mb-3">
-            <label for="type" class="form-label">TITRE </label>
+            <label for="type" class="form-label text-white">TITRE </label>
             <input type="text" class="form-control" name="type" placeholder="saisir le titre" value="<?= $quiz->getName() ?>">
         </div>
         <div>
@@ -19,8 +19,8 @@
                     <div class="panel-heading">
                         <h1>Liste des Questions</h1>
                     </div>
-                    <div class="table-responsive ">
-                        <table class="table table-striped">
+                    <div class="table-responsive">
+                        <table class="table table-striped text-white fs-5">
                             <tr>
                                 <th>ID</th>
                                 <th>LIBELLE</th>
@@ -32,7 +32,7 @@
                                 <th>SUPPRIMER</th>
                             </tr>
                             <?php foreach ($quiz->getQuestions() as $question) : ?>
-                                <tr>
+                                <tr class="text-white">
                                     <td><?= $question->getId() ?></td>
                                     <td><?= $question->getLibelle() ?></td>
                                     <td><?= $question->getResponseA() ?></td>

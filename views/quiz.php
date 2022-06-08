@@ -2,11 +2,11 @@
     <main>
         <form method="POST">
             <div class="text-container">
-                <h3 >Quiz</h3>
+                <h3></h3>
             </div>
             <?php if (isset($question)) : ?>
                 <div class="text-container">
-                    <p id="nb">QUESTION <?=$_GET['idx_question'] + 1?> / <?= count($questions) ?></p>
+                    <p id="nb" class="text-white" >QUESTION <?= $_GET['idx_question'] + 1 ?> / <?= count($questions) ?></p>
                     <p id="quest"><?= $question->getLibelle() ?></p>
                 </div>
                 <div class="quiz-options">
@@ -26,9 +26,8 @@
                     </label>
                 </div>
                 <input class="btn-1" type="submit" value="Valider" />
-                <!-- <button class="custom-btn btn-12"><span>Click!</span><span>Read More</span></button> -->
             <?php endif ?>
         </form>
-        score: <?=$_SESSION['score']?>
+        <div class="text-white">score: <?= $_SESSION['score'] ?></div>
     </main>
 </section>

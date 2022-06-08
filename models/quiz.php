@@ -102,23 +102,6 @@ class Quiz {
         }
         return $result;
     }
-    // public function save(): bool{
-
-    //     try{
-    //         $sql = 'INSERT INTO `quiz` (`name`,`active`,`id_categories`,`id_users`) 
-    //                 VALUES (:name,1, :id_categories, :id_users)';
-    //         $sth = $this->_pdo->prepare($sql);
-    //         $sth->bindValue(':name',$this->getName(),PDO::PARAM_STR);
-    //         $sth->bindValue(':id_categories', $this->getIdCategories(), PDO::PARAM_INT);
-    //         $sth->bindValue(':id_users', $this->getIdUsers(), PDO::PARAM_INT);
-    //         return $sth->execute();
-
-    //     }
-    //     catch(PDOException $e){
-    //         echo $e->getMessage();
-    //         // On retourne false si une exception est levée
-    //         return false;
-    //     }
 
 
     public static function get(int $id): Quiz

@@ -1,4 +1,4 @@
-<form class="col-md-9 mt-5" method="POST" action="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+<form class="col-md-9 mt-5 text-white" method="POST" action="<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
 
     <select class="form-select" aria-label="Default select example" name="id_quiz">
         <?php
@@ -28,5 +28,5 @@
         <input type="text" class="form-control" id="response" name="response" value="<?= $question->getResponse() ?>">
     </div>
     <button type="submit" class="btn" href="/controllers/addQuestCtrl.php"><?= !$question->getId() ? "Créer" : 'Modifier' ?></button>
-
+    <a href="/controllers/listQuizCtrl.php" class="btn" type="button">Retour</a>
 </form>

@@ -101,7 +101,7 @@ class Questions
 
     public function save()
     {
-        // si la question existe en base on la modifie
+        // si la question existe déjà en base on la modifie
         if ($this->id != 0) {
             $sql = 'UPDATE `questions` 
             SET `libelle` = :libelle,
@@ -114,7 +114,7 @@ class Questions
         }
         // si elle n'existe pas on l'insert en base
         else {
-            // On créé la requête avec des marqueurs nominatif
+            // On crée la requête avec des marqueurs nominatif
             $sql = 'INSERT INTO `questions` (`libelle`,`response_a`,`response_b`,`response_c`,`response`,`id_quiz`) 
                 VALUES (:libelle,:response_a,:response_b,:response_c, :response, :id_quiz)';
         }
@@ -129,7 +129,7 @@ class Questions
         if ($this->id != 0) {
             $sth->bindValue(':id', $this->id, PDO::PARAM_INT);
         }
-
+        // On retourne true si la requête s'est bien exécutée ou false dans le cas contraire
         $result = $sth->execute();
         if ($result && $this->id == 0) {
             //dernier id inserer en table

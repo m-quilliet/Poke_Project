@@ -209,7 +209,7 @@ class Users
             if ($sth === false) {
                 throw new PDOException();
             } else {
-                //dis tt récupérer sous forme de classe user// recupérer avec les classes et en premier la classe user
+                //récupérer sous forme de classe user
                 return $sth->fetchAll(PDO::FETCH_CLASS, '\Users'); //revoit un mapping ds ma classe users
             }
         } catch (PDOException $e) {

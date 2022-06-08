@@ -14,7 +14,6 @@
                 <div class="text-center">
                     <a class="btn btn-outline-light btn1" href="/controllers/userAddCtrl.php" role="button">Modifier mon profil</a>
                     <a class="btn btn-outline-light btn2" href="/controllers/validDeleteCtrl.php" role="button">Supprimer mon compte</a>
-                    </a>
                 </div>
 			</div>
 		</div>
