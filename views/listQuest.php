@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid text-white">
     <div class="row">
         <div class="col-8">
             <div class="panel panel-white">
@@ -7,7 +7,7 @@
                     <h1>Liste des Questions</h1>
                 </div>
                 <div class="table-responsive ">
-                    <table class="table table-striped">
+                    <table class="table table-striped text-white">
                         <tr>
                             <th>ID</th>
                             <th>LIBELLE</th>
@@ -19,7 +19,7 @@
                             <th>SUPPRIMER</th>
                         </tr>
                         <?php foreach ($allQuestion as $question) : ?>
-                            <tr>
+                            <tr class="text-white">
                                 <td><?= $question->getId() ?></td>
                                 <td><?= $question->getLibelle() ?></td>
                                 <td><?= $question->getResponseA() ?></td>

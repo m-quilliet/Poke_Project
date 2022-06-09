@@ -63,5 +63,5 @@
         ?>
     </div>
     <button type="submit" class="btn" href="/controllers/addQuestCtrl.php"><?= !$question->getId() ? "Créer" : 'Modifier' ?></button>
-    <a href="/controllers/listQuizCtrl.php" class="btn" type="button">Retour</a>
+    <a href="/controllers/listQuestCtrl.php" class="btn" type="button">Retour</a>
 </form>

@@ -12,12 +12,14 @@
             <a class="btn" href="/controllers/listQuizCtrl.php" role="button">Retour</a>
         </div>
     </form>
+    
     <?php if ($quiz->getId() != 0) : ?>
         <div class="row mt-3">
             <div>
                 <div class="panel panel-white">
                     <div class="panel-heading">
-                        <h1>Liste des Questions</h1>
+
+                        <h1>Liste des Questions <a class="btn my-4 " href="/controllers/addQuestCtrl.php?id_quiz=<?= $quiz->getId() ?>" role="button">Ajouter +</a></h1>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-striped text-white fs-5">
@@ -53,7 +55,7 @@
                             <?php endforeach ?>
                         </table>
                     </div>
-                    <a class="btn my-4 " href="/controllers/addQuestCtrl.php?id_quiz=<?= $quiz->getId() ?>" role="button">Ajouter +</a>
+                    
                 </div>
             </div>
         </div>
