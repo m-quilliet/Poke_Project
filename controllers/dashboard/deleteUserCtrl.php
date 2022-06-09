@@ -1,6 +1,6 @@
 <?php
 require_once(dirname(__FILE__).'/../../utils/init.php');
-require_once(dirname(__FILE__) . '/../helpers/adminOnly.php');
+require_once(dirname(__FILE__) . '/../../helpers/adminOnly.php');
 
 
 
@@ -14,7 +14,7 @@ if (!empty($_GET)) {
 
 
 
-        header ('location: /controllers/dashboard/headerDashCtrl.php');
+        header ('location: /controllers/userListCtrl.php');
         die;
 
     }

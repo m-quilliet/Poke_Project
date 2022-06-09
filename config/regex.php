@@ -7,7 +7,7 @@ define('REGEXP_PHONE', '^(\+33|0|0033)[1-9]((\-|\/|\.)?\d{2}){4}$');
 
 define('REGEXP_DATE_HOUR', "^\d{4}-\d{2}-\d{1,2}$");
 
-define('REGEX_TEXTAREA', '^[a-zA-Z\n\r\s\?]*$');
+define('REGEX_TEXTAREA', '^[a-zA-Zïëüÿöçâéèñôáóøšşćĕłăčőřžåķņńžůãşœæę\n\r\s\?]*$');
 
 define('REGEXP_STR_NO_NUMBER', '^[A-Za-zéèêëàâäôöûüç\' ?]+$');
 

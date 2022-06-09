@@ -30,6 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     } else {
         $errorsArray['libelle_error'] = 'Le champ est obligatoire';
     }
+    $question->setLibelle($libelle);
+
     // Nettoyage du champ responseA
     $responseA = trim(filter_input(INPUT_POST, 'responseA', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $isOk = filter_var($responseA, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_TEXTAREA . '/')));
@@ -41,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     } else {
         $errorsArray['responseA_error'] = 'Le champ est obligatoire';
     }
+    $question->setResponseA($responseA);
 
     // Nettoyage du champ responseB
     $responseB = trim(filter_input(INPUT_POST, 'responseB', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
@@ -53,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     } else {
         $errorsArray['responseB_error'] = 'Le champ est obligatoire';
     }
+    $question->setResponseB($responseB);
     //Nettoyage du champ responseC
     $responseC = trim(filter_input(INPUT_POST, 'responseC', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $isOk = filter_var($responseC, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_TEXTAREA . '/')));
@@ -64,6 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     } else {
         $errorsArray['responseC_error'] = 'Le champ est obligatoire';
     }
+    $question->setResponseC($responseC);
     //Nettoyage du champ response
     $response = trim(filter_input(INPUT_POST, 'response', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
     $isOk = filter_var($response, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_TEXTAREA . '/')));
@@ -75,13 +80,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     } else {
         $errorsArray['response_error'] = 'Le champ est obligatoire';
     }
+    $question->setResponse($response);
 
     if (empty($errorsArray)) {
-        $question->setLibelle($libelle);
-        $question->setResponseA($responseA);
-        $question->setResponseB($responseB);
-        $question->setResponseC($responseC);
-        $question->setResponse($response);
 
         //
         $result = $question->save();
